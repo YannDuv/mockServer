@@ -1,0 +1,66 @@
+{
+    ":envCode/iphoneservice/mail/:userId/:crId/:partnerId/form": {
+        "errors": [],
+        "warnings": [],
+        "infos": [{
+            "message": "getListeObjetsMS"
+        }, {
+            "message": "OK"
+        }],
+        "listeObjetsEmail": [{
+            "idForm": "62",
+            "libelle": "Test motif COMMUN (000)",
+            "mailDest": "assistance.vitrine@credit-agricole-sa.fr"
+        }, {
+            "idForm": "60",
+            "libelle": "Test motif COMMUN (111)",
+            "mailDest": "assistance.vitrine@credit-agricole-sa.fr"
+        }, {
+            "idForm": "56",
+            "libelle": "Test motif PART (100)",
+            "mailDest": "assistance.vitrine@credit-agricole-sa.fr"
+        }, {
+            "idForm": "59",
+            "libelle": "Test motif PART/ENT (101)",
+            "mailDest": "assistance.vitrine@credit-agricole-sa.fr"
+        }, {
+            "idForm": "58",
+            "libelle": "Test motif PART/PRO (110)",
+            "mailDest": "assistance.vitrine@credit-agricole-sa.fr"
+        }]
+    },
+    ":envCode/iphoneservice/mail/:userId/:crId/:partnerId/listmail": {
+        "errors": [],
+        "warnings": [],
+        "infos": [{
+            "message": "getListeEmailsMS"
+        }, {
+            "message": "OK"
+        }],
+        "occupation": 0,
+        "nbEmail": 1,
+        "nbEmailNonLu": 1,
+        "sizeMaxPJs": 2,
+        "forbiddenPJsExt": [".bat", ".bin", ".cmd", ".com", ".cpl", ".dll", ".exe", ".hlp", ".hta", ".htt", ".js", ".jse", ".lnk", ".ocx", ".ov?", ".ole", ".pif", ".pl", ".scr", ".sh", ".shs", ".sys", ".vb?", ".vxd", ".jar", ".folder", ".job", ".asx", ".ico", ".ani", ".cur", ".386"],
+        "listeEmail": [{
+            "idEmail": "90",
+            "adresMS": "008780000030499569462226558921@hom.ca-bamms-878tae.fr",
+            "emailCorrespondant": "envtest@ca-centrest.fr",
+            "nomCorrespondant": "Crédit agricole Centre-est",
+            "idDossier": "1",
+            "date": "17/06/2015 17:20:00",
+            "objet": "Bienvenue dans votre Messagerie Sécurisée !",
+            "isLu": false,
+            "isEntrant": true,
+            "isPiecesJointes": false,
+            "isReponseAutorise": false,
+            "isReponse": false,
+            "idForm": "null",
+            "taille": 464,
+            "isCommercial": false,
+            "idNewsletterClient": "",
+            "ctmes": "",
+            "isSuivi": false
+        }]
+    }
+}

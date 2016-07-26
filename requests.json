@@ -1,0 +1,340 @@
+{
+    ":envCode/iphoneservice/vitrine/:crId/isResetPwdBamActive": {
+        "errors": [],
+        "warnings": [],
+        "infos": [{
+            "message": "isResetPwdBamActive"
+        }, {
+            "message": "OK"
+        }],
+        "isResetPwdActive": false
+    },
+    ":envCode/iphoneservice/notifications/:userId/:crId/:partnerId/association": {
+        "newPushId": "APA91bFZJY7FAfdrWN-kE87iNt5uMR24dJE7eccuVUJQmsBPXkCtBE82ayzMvwnAdvZM8Nu5B1eo1f89234wJMn1Lb3D-gTQK5D1sFE8MYQOmDf8yhgFSL3JeUpFq83ZdYmwWfHKjeCjBDB-TxSTb_oYtMfUaIKtUg",
+        "notificationEnabled": "true",
+        "deviceType": "ANDROID",
+        "pushId": ""
+    },
+    ":envCode/iphoneservice/portfolio/:userId/:crId/:partnerId/accounts/:accountId/operations": {
+        "errors": [],
+        "warnings": [],
+        "infos": [{
+            "message": "getAccountOperations"
+        }, {
+            "message": "OK"
+        }],
+        "operation": []
+    },
+    ":envCode/iphoneservice/portfolio/:userId/:crId/:partnerId/AccountsToTransfers": {
+        "errors": [],
+        "warnings": [],
+        "infos": [{
+            "message": "getListeDeComptesPrVirements"
+        }, {
+            "message": "OK"
+        }],
+        "issuersAccounts": [{
+            "id": "62226558905",
+            "label": "CCHQ",
+            "holder": "M.OU MME LOYVEM COMUAL",
+            "productCategory": "20",
+            "productType": "Compte courant",
+            "color": "red",
+            "balance": 4526.68,
+            "devise": "EUR",
+            "isEligibleImpulsion": true,
+            "bic": "AGRIFRPP878",
+            "iban": "FR7617806004806222655890565"
+        }, {
+            "id": "62228218893",
+            "label": "LDD",
+            "holder": "M.       LOYVEM COMUAL",
+            "productCategory": "40",
+            "productType": "Epargne disponible",
+            "color": "yellow",
+            "balance": 6780.52,
+            "devise": "EUR",
+            "isEligibleImpulsion": false,
+            "bic": "AGRIFRPP878",
+            "iban": "FR7617806004806222821889381"
+        }, {
+            "id": "62253186165",
+            "label": "LIV A",
+            "holder": "M.       LOYVEM COMUAL",
+            "productCategory": "40",
+            "productType": "Epargne disponible",
+            "color": "yellow",
+            "balance": 8056.81,
+            "devise": "EUR",
+            "isEligibleImpulsion": false,
+            "bic": "AGRIFRPP878",
+            "iban": "FR7617806004806225318616516"
+        }, {
+            "id": "62232529887",
+            "label": "CSL",
+            "holder": "M.OU MME LOYVEM COMUAL",
+            "productCategory": "40",
+            "productType": "Epargne disponible",
+            "color": "yellow",
+            "balance": 43.26,
+            "devise": "EUR",
+            "isEligibleImpulsion": false,
+            "bic": "AGRIFRPP878",
+            "iban": "FR7617806004806223252988712"
+        }],
+        "recipientsAccounts": [{
+            "id": "62226558905",
+            "label": "CCHQ",
+            "holder": "M.OU MME LOYVEM COMUAL",
+            "productCategory": "20",
+            "productType": "Compte courant",
+            "color": "red",
+            "balance": 4526.68,
+            "devise": "EUR",
+            "isExternal": false,
+            "bic": "AGRIFRPP878",
+            "iban": "FR7617806004806222655890565"
+        }, {
+            "id": "62228218893",
+            "label": "LDD",
+            "holder": "M.       LOYVEM COMUAL",
+            "productCategory": "40",
+            "productType": "Epargne disponible",
+            "color": "yellow",
+            "balance": 6780.52,
+            "devise": "EUR",
+            "isExternal": false,
+            "orderImpulsion": 2,
+            "bic": "AGRIFRPP878",
+            "iban": "FR7617806004806222821889381"
+        }, {
+            "id": "62253186165",
+            "label": "LIV A",
+            "holder": "M.       LOYVEM COMUAL",
+            "productCategory": "40",
+            "productType": "Epargne disponible",
+            "color": "yellow",
+            "balance": 8056.81,
+            "devise": "EUR",
+            "isExternal": false,
+            "orderImpulsion": 2,
+            "bic": "AGRIFRPP878",
+            "iban": "FR7617806004806225318616516"
+        }, {
+            "id": "62232529887",
+            "label": "CSL",
+            "holder": "M.OU MME LOYVEM COMUAL",
+            "productCategory": "40",
+            "productType": "Epargne disponible",
+            "color": "yellow",
+            "balance": 43.26,
+            "devise": "EUR",
+            "isExternal": false,
+            "orderImpulsion": 5,
+            "bic": "AGRIFRPP878",
+            "iban": "FR7617806004806223252988712"
+        }, {
+            "id": "FR7630004007000000135047989",
+            "holder": "Nadir Salas",
+            "color": "lightGray",
+            "isExternal": true,
+            "bic": "BNPAFRPP",
+            "iban": "FR7630004007000000135047989"
+        }, {
+            "id": "FR7614518292670263045214062",
+            "holder": "Layson Fortuneo",
+            "color": "lightGray",
+            "isExternal": true,
+            "bic": "FTNOFRP1",
+            "iban": "FR7614518292670263045214062"
+        }, {
+            "id": "FR7617515006000495782206569",
+            "holder": "Guillaume Quentin",
+            "color": "lightGray",
+            "isExternal": true,
+            "bic": "CEPAFRPP751",
+            "iban": "FR7617515006000495782206569"
+        }, {
+            "id": "FR7640618802750004006147363",
+            "holder": "GIMENEZ Grégory",
+            "color": "lightGray",
+            "isExternal": true,
+            "bic": "BOUSFRPP",
+            "iban": "FR7640618802750004006147363"
+        }, {
+            "id": "FR7630004008350000223194423",
+            "holder": "Michel Daniel",
+            "color": "lightGray",
+            "isExternal": true,
+            "bic": "BNPAFRPP",
+            "iban": "FR7630004008350000223194423"
+        }, {
+            "id": "IT28O0605513401000000005995",
+            "holder": "Landi",
+            "color": "lightGray",
+            "isExternal": true,
+            "bic": "BAMAIT3A",
+            "iban": "IT28O0605513401000000005995"
+        }, {
+            "id": "FR7630003031500005046280602",
+            "holder": "mathilde layson",
+            "color": "lightGray",
+            "isExternal": true,
+            "bic": "SOGEFRPP",
+            "iban": "FR7630003031500005046280602"
+        }, {
+            "id": "FR7630003038330005142506579",
+            "holder": "gwendoline quentin",
+            "color": "lightGray",
+            "isExternal": true,
+            "bic": "SOGEFRPP",
+            "iban": "FR7630003038330005142506579"
+        }, {
+            "id": "FR7630003038320005056305604",
+            "holder": "Quentin Geoffroy",
+            "color": "lightGray",
+            "isExternal": true,
+            "bic": "SOGEFRPP",
+            "iban": "FR7630003038320005056305604"
+        }]
+    },
+    ":envCode/iphoneservice/portfolio/:userId/:crId/:partnerId/accounts/balanceHistory": {
+        "errors": [],
+        "warnings": [],
+        "infos": [{
+            "message": "getAccountsBalanceHistory"
+        }, {
+            "message": "OK"
+        }],
+        "accountBalanceHistory": [{
+            "id": "62226558905",
+            "crId": "878",
+            "history": {
+                "balance": [{
+                    "date": "20160725",
+                    "amount": 4526.68
+                }, {
+                    "date": "20160630",
+                    "amount": 4526.68
+                }, {
+                    "date": "20160531",
+                    "amount": 4526.68
+                }, {
+                    "date": "20160430",
+                    "amount": 4526.68
+                }]
+            }
+        }, {
+            "id": "62227250769",
+            "crId": "878",
+            "history": {
+                "balance": [{
+                    "date": "20160115",
+                    "amount": 6941.86
+                }]
+            }
+        }, {
+            "id": "62228218893",
+            "crId": "878",
+            "history": {
+                "balance": [{
+                    "date": "20160725",
+                    "amount": 6780.52
+                }, {
+                    "date": "20160630",
+                    "amount": 6780.52
+                }, {
+                    "date": "20160531",
+                    "amount": 6780.52
+                }, {
+                    "date": "20160430",
+                    "amount": 6780.52
+                }]
+            }
+        }, {
+            "id": "62253186165",
+            "crId": "878",
+            "history": {
+                "balance": [{
+                    "date": "20160725",
+                    "amount": 8056.81
+                }, {
+                    "date": "20160630",
+                    "amount": 8056.81
+                }, {
+                    "date": "20160531",
+                    "amount": 8056.81
+                }, {
+                    "date": "20160430",
+                    "amount": 8056.81
+                }]
+            }
+        }, {
+            "id": "62232529887",
+            "crId": "878",
+            "history": {
+                "balance": [{
+                    "date": "20160725",
+                    "amount": 43.26
+                }, {
+                    "date": "20160630",
+                    "amount": 43.26
+                }, {
+                    "date": "20160531",
+                    "amount": 43.26
+                }, {
+                    "date": "20160430",
+                    "amount": 43.26
+                }]
+            }
+        }, {
+            "id": "62227925561",
+            "crId": "878",
+            "history": {
+                "balance": [{
+                    "date": "20160725",
+                    "amount": 0
+                }, {
+                    "date": "20160630",
+                    "amount": 0
+                }, {
+                    "date": "20160531",
+                    "amount": 0
+                }, {
+                    "date": "20160430",
+                    "amount": 0
+                }]
+            }
+        }]
+    },
+    ":envCode/iphoneservice/configuration/:userId/:crId/:partnerId/profiles/ghostaccounts/balanceHistory": {
+        "errors": [],
+        "warnings": [],
+        "infos": [{
+            "message": "getGhostAccountsBalanceHistory"
+        }, {
+            "message": "OK"
+        }],
+        "accountBalanceHistory": []
+    },
+    ":envCode/iphoneservice/configuration/:userId/:crId/:partnerId/myBenefits": {
+        "errors": [],
+        "warnings": [],
+        "infos": [{
+            "message": "getMesAvantages"
+        }, {
+            "message": "OK"
+        }],
+        "benefitCategories": []
+    },
+    ":envCode/iphoneservice/edocument/:userId/:crId/:partnerId/eDocumentsList": {
+        "errors": [],
+        "warnings": [],
+        "infos": [{
+            "message": "getEdocumentsList"
+        }, {
+            "message": "OK"
+        }],
+        "eDocumentsList": []
+    }
+}

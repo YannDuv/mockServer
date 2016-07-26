@@ -1,0 +1,12 @@
+{
+  ":envCode/iphoneservice/configuration/:userId/:crId/:partnerId/profiles/virtualOperations": {
+      "errors": [],
+      "warnings": [],
+      "infos": [{
+          "message": "getVirtualOperations"
+      }, {
+          "message": "OK"
+      }],
+      "operation": []
+  }
+}

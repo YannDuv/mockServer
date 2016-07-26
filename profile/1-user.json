@@ -1,0 +1,971 @@
+{
+    ":envCode/iphoneservice/configuration/:userId/:crId/:partnerId/settings2": {
+        "errors": [],
+        "warnings": [],
+        "infos": [{
+            "message": "getParametrage"
+        }, {
+            "message": "OK"
+        }],
+        "listeActualites": [{
+            "version": "5",
+            "title": "Contenu1",
+            "content": "Ceci est mon contenu1",
+            "picture": "http://hom.ca-centrest.fr/Vitrine/Obj/test112112_tcm226-423514.jpg"
+        }],
+        "configuration": {},
+        "mobileNewsFeed": {
+            "version": "5",
+            "picture": "http://hom.ca-centrest.fr/Vitrine/Obj/test112112_tcm226-423514.jpg",
+            "type": "VUE",
+            "title": "Contenu1",
+            "content": "Ceci est mon contenu1"
+        },
+        "userInfos": {
+            "segment": [],
+            "numTelFixe": "0490326386",
+            "numTelMobile": "0225777133",
+            "typeMarche": "P",
+            "isMineur": false,
+            "hasCredit": true,
+            "birthday": "19721023",
+            "idPart": "00000304995694",
+            "idCael": "62226558921",
+            "perimetresLies": "04"
+        },
+        "settings": {
+            "tarifDispo": true,
+            "vitrineContact": true,
+            "animationRegionale": true,
+            "virement": true,
+            "deblocageReserveCredit": true,
+            "isMSActive": true,
+            "isRDVActive": true,
+            "isChangeCodePersoActive": true,
+            "isReroutageActive": false,
+            "isCardLimitActive": false,
+            "resetPwdBamActive": false,
+            "isAddingExternalAccountEnable": true,
+            "isVADEnable": false,
+            "isPlafondsCarteEnable": false,
+            "isScheduledTransferEnable": true,
+            "isContractSubscription": true,
+            "isEdocumentEnable": false,
+            "trackingActivated": true,
+            "predicaActif": true,
+            "modeDeposeSiMMActif": false,
+            "dncActif": false,
+            "rdvVisioActif": false,
+            "boutonVertActif": false,
+            "bvVisioActif": false,
+            "bvChatActif": false,
+            "bvCallBackActif": false,
+            "eSimulCaActive": true,
+            "isCommandeChequierEnable": true,
+            "isEmailCommandeChequierEnable": true,
+            "isModeLivraisonCommandeChequierEnable": false,
+            "basculePerimetreActif": true,
+            "motifsRDVActif": false,
+            "motifsMSActif": true,
+            "sendingSimulation": false
+        }
+    },
+    ":envCode/iphoneservice/configuration/:crId/tablesParametresMobile/:ticket": {
+        "errors": [],
+        "warnings": [],
+        "infos": [{
+            "message": "getTablesParametrageMobile"
+        }, {
+            "message": "OK"
+        }],
+        "tablesParametresMobile": {
+            "tablesParametres": {
+                "TextesAuthentificationForte": [{
+                    "Cle": "VALIDATION_ENVOI",
+                    "Valeur": "Nous venons de vous envoyer un code par SMS au numéro suivant : "
+                }, {
+                    "Cle": "SAISI_CODE",
+                    "Valeur": "Veuillez saisir le code à 6 caractères que vous venez de recevoir : "
+                }, {
+                    "Cle": "VALIDATION_RENVOI",
+                    "Valeur": "Un nouveau code SMS vous a été envoyé au numéro de téléphone"
+                }, {
+                    "Cle": "MAUVAIS_FORMAT",
+                    "Valeur": "Mauvais format. Vous devez entrer le code à 6 caractères que vous avez reçu par SMS"
+                }, {
+                    "Cle": "MAUVAIS_CODE",
+                    "Valeur": "Votre code est faux ou a expiré "
+                }],
+                "TextesCommandeChequier": [{
+                    "Cle": "VALIDATION_ADRESSE",
+                    "Valeur": "Si l’adresse indiquée ci-dessus est erronée ou si vous souhaitez que votre commande de chéquier soit envoyée à une autre adresse, nous vous invitons à annuler la présente commande et à contacter votre agence."
+                }, {
+                    "Cle": "VALIDATION_COMMANDE_AGENCE",
+                    "Valeur": "En cliquant sur « Valider ma commander », je demande la validation de ma commande de chéquier dans mon agence. J’ai bien pris connaissance du prix de ce service et j’ai bien noté que ce chéquier sera mis à ma disposition à mon agence.*\n\n* contactez votre conseiller pour connaitre le délai dans lequel votre chéquier sera disponible et la durée pendant laquelle il sera conservé à votre disposition en agence. "
+                }, {
+                    "Cle": "VALIDATION_COMMANDE_ADRESSE",
+                    "Valeur": "En cliquant sur « Valider ma commande », je demande la validation de ma commande de chéquier à l’adresse indiquée. J’atteste que cette adresse est bien celle où je réside actuellement et à laquelle je souhaite recevoir mon chéquier. J’ai bien pris connaissance du prix de ce service et je m’engage à prévenir mon agence en cas de non-réception de ma commande dans les 10 jours."
+                }, {
+                    "Cle": "SAISI_EMAIL",
+                    "Valeur": "Merci de saisir l’adresse email sur laquelle vous souhaitez recevoir la confirmation de votre demande"
+                }, {
+                    "Cle": "MAUVAIS_FORMAT_EMAIL",
+                    "Valeur": "L’adresse email de réception de confirmation de votre commande de chéquier n’est pas correctement formatée"
+                }, {
+                    "Cle": "CONFIRMATION_OTP",
+                    "Valeur": "Pour effectuer votre commande chéquiers, vous devez demander votre SMS, Le code SMS que vous allez recevoir à une durée de validité limitée. Passé ce délai, il vous faudra en demander un nouveau pour vous authentifier.\nCe SMS sera envoyé au"
+                }, {
+                    "Cle": "VALIDATION_COMMANDE_ENREGISTREE",
+                    "Valeur": "Votre commande de chéquier a bien été enregistrée. Elle sera satisfaite dans les meilleurs délais, sous réserve que vous n’ayez pas de chéquier en attente"
+                }],
+                "Fonctionnalites": [{
+                    "Cle": "TCHAT_EERD",
+                    "Valeur": {
+                        "isActive": "true",
+                        "message": ""
+                    }
+                }],
+                "CategorieProjet": [{
+                    "Cle": "1",
+                    "Valeur": {
+                        "Label": "Habitation",
+                        "isCreateEnable": "1"
+                    }
+                }, {
+                    "Cle": "2",
+                    "Valeur": {
+                        "Label": "Famille",
+                        "isCreateEnable": "1"
+                    }
+                }, {
+                    "Cle": "3",
+                    "Valeur": {
+                        "Label": "Loisirs",
+                        "isCreateEnable": "1"
+                    }
+                }, {
+                    "Cle": "4",
+                    "Valeur": {
+                        "Label": "Retraite",
+                        "isCreateEnable": "1"
+                    }
+                }, {
+                    "Cle": "5",
+                    "Valeur": {
+                        "Label": "Entreprise",
+                        "isCreateEnable": "1"
+                    }
+                }, {
+                    "Cle": "7",
+                    "Valeur": {
+                        "Label": "Travaux/bricolage",
+                        "isCreateEnable": "1"
+                    }
+                }, {
+                    "Cle": "12",
+                    "Valeur": {
+                        "Label": "Épargne",
+                        "isCreateEnable": "0"
+                    }
+                }, {
+                    "Cle": "13",
+                    "Valeur": {
+                        "Label": "Vacances",
+                        "isCreateEnable": "1"
+                    }
+                }, {
+                    "Cle": "21",
+                    "Valeur": {
+                        "Label": "Véhicule",
+                        "isCreateEnable": "1"
+                    }
+                }, {
+                    "Cle": "35",
+                    "Valeur": {
+                        "Label": "Cadeaux",
+                        "isCreateEnable": "0"
+                    }
+                }, {
+                    "Cle": "41",
+                    "Valeur": {
+                        "Label": "Evénements",
+                        "isCreateEnable": "0"
+                    }
+                }],
+                "CAPIJU": [{
+                    "Cle": "67",
+                    "Valeur": {
+                        "IDCPJU": "67",
+                        "LCPIJU": "Famille Pièces d’identité"
+                    }
+                }, {
+                    "Cle": "68",
+                    "Valeur": {
+                        "IDCPJU": "68",
+                        "LCPIJU": "Justificatifs de domicile"
+                    }
+                }, {
+                    "Cle": "111",
+                    "Valeur": {
+                        "IDCPJU": "111",
+                        "LCPIJU": "Situation professionnelle et financière"
+                    }
+                }],
+                "CategorieProjetMarche": [{
+                    "Cle": "100",
+                    "Valeur": {
+                        "Label": "Famille",
+                        "isCreateEnable": "1",
+                        "Marche": "{\"part\"}"
+                    }
+                }, {
+                    "Cle": "101",
+                    "Valeur": {
+                        "Label": "Retraite",
+                        "isCreateEnable": "1",
+                        "Marche": "{\"part\"}"
+                    }
+                }, {
+                    "Cle": "102",
+                    "Valeur": {
+                        "Label": "Entreprise",
+                        "isCreateEnable": "1",
+                        "Marche": "{\"part\"}"
+                    }
+                }, {
+                    "Cle": "103",
+                    "Valeur": {
+                        "Label": "Habitation",
+                        "isCreateEnable": "1",
+                        "Marche": "{\"part\"}"
+                    }
+                }, {
+                    "Cle": "104",
+                    "Valeur": {
+                        "Label": "Travaux/bricolage",
+                        "isCreateEnable": "1",
+                        "Marche": "{\"part\"}"
+                    }
+                }, {
+                    "Cle": "105",
+                    "Valeur": {
+                        "Label": "Evènements",
+                        "isCreateEnable": "1",
+                        "Marche": "{\"part\"}"
+                    }
+                }, {
+                    "Cle": "106",
+                    "Valeur": {
+                        "Label": "Loisirs",
+                        "isCreateEnable": "1",
+                        "Marche": "{\"part\"}"
+                    }
+                }, {
+                    "Cle": "107",
+                    "Valeur": {
+                        "Label": "Vacances",
+                        "isCreateEnable": "1",
+                        "Marche": "{\"part\"}"
+                    }
+                }, {
+                    "Cle": "108",
+                    "Valeur": {
+                        "Label": "Véhicule",
+                        "isCreateEnable": "1",
+                        "Marche": "{\"part\"}"
+                    }
+                }, {
+                    "Cle": "109",
+                    "Valeur": {
+                        "Label": "Financement local",
+                        "isCreateEnable": "1",
+                        "Marche": "{\"pro\",\"ent\"}"
+                    }
+                }, {
+                    "Cle": "110",
+                    "Valeur": {
+                        "Label": "Aménagement travaux",
+                        "isCreateEnable": "1",
+                        "Marche": "{\"pro\",\"ent\"}"
+                    }
+                }, {
+                    "Cle": "111",
+                    "Valeur": {
+                        "Label": "Emploi",
+                        "isCreateEnable": "1",
+                        "Marche": "{\"pro\",\"ent\"}"
+                    }
+                }, {
+                    "Cle": "112",
+                    "Valeur": {
+                        "Label": "Investissements",
+                        "isCreateEnable": "1",
+                        "Marche": "{\"pro\",\"ent\"}"
+                    }
+                }, {
+                    "Cle": "113",
+                    "Valeur": {
+                        "Label": "Véhicule",
+                        "isCreateEnable": "1",
+                        "Marche": "{\"pro\",\"ent\"}"
+                    }
+                }, {
+                    "Cle": "114",
+                    "Valeur": {
+                        "Label": "Développement",
+                        "isCreateEnable": "1",
+                        "Marche": "{\"pro\",\"ent\"}"
+                    }
+                }, {
+                    "Cle": "115",
+                    "Valeur": {
+                        "Label": "Evènements",
+                        "isCreateEnable": "1",
+                        "Marche": "{\"pro\",\"ent\"}"
+                    }
+                }],
+                "SUHYGRMB": [{
+                    "Cle": "1",
+                    "Valeur": {
+                        "CSUHY1": "1",
+                        "LSUHYG": "Relevé de Comptes"
+                    }
+                }, {
+                    "Cle": "2",
+                    "Valeur": {
+                        "CSUHY1": "2",
+                        "LSUHYG": "Communication Personnalisée"
+                    }
+                }, {
+                    "Cle": "3",
+                    "Valeur": {
+                        "CSUHY1": "3",
+                        "LSUHYG": "Compte Service"
+                    }
+                }, {
+                    "Cle": "4",
+                    "Valeur": {
+                        "CSUHY1": "4",
+                        "LSUHYG": "Crédits"
+                    }
+                }, {
+                    "Cle": "5",
+                    "Valeur": {
+                        "CSUHY1": "5",
+                        "LSUHYG": "Dailly"
+                    }
+                }, {
+                    "Cle": "6",
+                    "Valeur": {
+                        "CSUHY1": "6",
+                        "LSUHYG": "Déclarations Fiscales"
+                    }
+                }, {
+                    "Cle": "7",
+                    "Valeur": {
+                        "CSUHY1": "7",
+                        "LSUHYG": "Effets"
+                    }
+                }, {
+                    "Cle": "8",
+                    "Valeur": {
+                        "CSUHY1": "8",
+                        "LSUHYG": "Épargne à Terme"
+                    }
+                }, {
+                    "Cle": "9",
+                    "Valeur": {
+                        "CSUHY1": "9",
+                        "LSUHYG": "Gestion du Compte Courant"
+                    }
+                }, {
+                    "Cle": "10",
+                    "Valeur": {
+                        "CSUHY1": "10",
+                        "LSUHYG": "Mandat de Gestion"
+                    }
+                }, {
+                    "Cle": "11",
+                    "Valeur": {
+                        "CSUHY1": "11",
+                        "LSUHYG": "Moyens de Paiement"
+                    }
+                }, {
+                    "Cle": "12",
+                    "Valeur": {
+                        "CSUHY1": "12",
+                        "LSUHYG": "Non Résident Fiscal"
+                    }
+                }, {
+                    "Cle": "13",
+                    "Valeur": {
+                        "CSUHY1": "13",
+                        "LSUHYG": "Opérations Internationales"
+                    }
+                }, {
+                    "Cle": "14",
+                    "Valeur": {
+                        "CSUHY1": "14",
+                        "LSUHYG": "Assurance Vie"
+                    }
+                }, {
+                    "Cle": "15",
+                    "Valeur": {
+                        "CSUHY1": "15",
+                        "LSUHYG": "Relevés de Facturation"
+                    }
+                }, {
+                    "Cle": "16",
+                    "Valeur": {
+                        "CSUHY1": "16",
+                        "LSUHYG": "Relevés de Factures"
+                    }
+                }, {
+                    "Cle": "17",
+                    "Valeur": {
+                        "CSUHY1": "17",
+                        "LSUHYG": "Remises TPE"
+                    }
+                }, {
+                    "Cle": "18",
+                    "Valeur": {
+                        "CSUHY1": "18",
+                        "LSUHYG": "Titres et Bourse"
+                    }
+                }, {
+                    "Cle": "19",
+                    "Valeur": {
+                        "CSUHY1": "19",
+                        "LSUHYG": "Contrats"
+                    }
+                }, {
+                    "Cle": "20",
+                    "Valeur": {
+                        "CSUHY1": "20",
+                        "LSUHYG": "Cautions"
+                    }
+                }, {
+                    "Cle": "21",
+                    "Valeur": {
+                        "CSUHY1": "21",
+                        "LSUHYG": "Avis d'Opération"
+                    }
+                }, {
+                    "Cle": "22",
+                    "Valeur": {
+                        "CSUHY1": "22",
+                        "LSUHYG": "Documents Administratifs"
+                    }
+                }, {
+                    "Cle": "23",
+                    "Valeur": {
+                        "CSUHY1": "23",
+                        "LSUHYG": "Réserves de Crédit"
+                    }
+                }, {
+                    "Cle": "24",
+                    "Valeur": {
+                        "CSUHY1": "24",
+                        "LSUHYG": "Entretien Épargne"
+                    }
+                }, {
+                    "Cle": "25",
+                    "Valeur": {
+                        "CSUHY1": "25",
+                        "LSUHYG": "Assurances"
+                    }
+                }],
+                "TextesLegauxProduit": [{
+                    "Cle": "EPARGNE_INFOS_COMPTE",
+                    "Valeur": "Les dispositions complètes du contrat figurent dans la notice d’information qui vous a été remise à l’adhésion."
+                }, {
+                    "Cle": "EPARGNE_REPARTITION_SUPPORT1",
+                    "Valeur": "Estimation des montants des supports aux dernières valeurs connues. Les performances passées ne préjugent pas des performances futures."
+                }, {
+                    "Cle": "EPARGNE_REPARTITION_SUPPORT2",
+                    "Valeur": "Estimation  du nombre de parts sous réserve des opérations en cours non dénouées.\nLes montants investis sur les supports en unités de compte ne sont pas garantis, mais sont sujets à des fluctuations à la hausse ou à la baisse dépendant en particulier de l'évolution des marchés financiers."
+                }, {
+                    "Cle": "EPARGNE_TUILE_COMPTE1",
+                    "Valeur": "La valorisation désigne le montant perçu par le souscripteur du contrat en cas de rachat total, hors fiscalité. "
+                }, {
+                    "Cle": "EPARGNE_TUILE_COMPTE2",
+                    "Valeur": "Les +/- values potentielles du contrat sont obtenues par différence entre la valorisation du contrat et le montant investi sur le contrat (cumul des versements nets de frais moins somme des rachats). "
+                }, {
+                    "Cle": "PREVOYANCE_DECES_INFOS_COMPTE",
+                    "Valeur": "Les dispositions complètes du contrat figurent dans la notice d’information qui vous a été remise à l’adhésion."
+                }, {
+                    "Cle": "PREVOYANCE_DEPENDANCE_INFOS_COMPTE",
+                    "Valeur": "Les événements garantis et les conditions figurent dans la notice d’information du contrat d’assurance et dans les conditions générales du contrat d’assistance, qui vous ont été remises à l’adhésion."
+                }, {
+                    "Cle": "PREVOYANCE_ARRET_TRAVAIL_INFOS_COMPTE",
+                    "Valeur": "Les événements garantis et les conditions figurent dans la notice d’information du contrat d’assurance et dans les conditions générales du contrat d’assistance, qui vous ont été remises à l’adhésion."
+                }, {
+                    "Cle": "PREVOYANCE_FINANCEMENT_OBSEQUES_INFOS_COMPTE",
+                    "Valeur": "Les événements garantis et les conditions figurent dans la notice d’information du contrat Financement obsèques et dans les conditions générales du contrat Assistance obsèques, qui vous ont été remises à l’adhésion."
+                }, {
+                    "Cle": "PREVOYANCE_ASSISTANCE_OBSEQUES_INFOS_COMPTE",
+                    "Valeur": "Les événements garantis et les conditions figurent dans la notice d’information du contrat Financement obsèques et dans les conditions générales du contrat Assistance obsèques, qui vous ont été remises à l’adhésion."
+                }],
+                "ACQPIJU": [{
+                    "Cle": "23",
+                    "Valeur": {
+                        "IDPIJU": "23",
+                        "AVIACQ": "1"
+                    }
+                }, {
+                    "Cle": "94",
+                    "Valeur": {
+                        "IDPIJU": "94",
+                        "AVIACQ": "1"
+                    }
+                }, {
+                    "Cle": "343",
+                    "Valeur": {
+                        "IDPIJU": "343",
+                        "AVIACQ": "1"
+                    }
+                }, {
+                    "Cle": "99343",
+                    "Valeur": {
+                        "IDPIJU": "99343",
+                        "AVIACQ": "1"
+                    }
+                }, {
+                    "Cle": "196",
+                    "Valeur": {
+                        "IDPIJU": "196",
+                        "AVIACQ": "1"
+                    }
+                }, {
+                    "Cle": "194",
+                    "Valeur": {
+                        "IDPIJU": "194",
+                        "AVIACQ": "1"
+                    }
+                }, {
+                    "Cle": "941",
+                    "Valeur": {
+                        "IDPIJU": "941",
+                        "AVIACQ": "1"
+                    }
+                }, {
+                    "Cle": "92",
+                    "Valeur": {
+                        "IDPIJU": "92",
+                        "AVIACQ": "1"
+                    }
+                }, {
+                    "Cle": "99992",
+                    "Valeur": {
+                        "IDPIJU": "99992",
+                        "AVIACQ": "1"
+                    }
+                }, {
+                    "Cle": "97",
+                    "Valeur": {
+                        "IDPIJU": "97",
+                        "AVIACQ": "1"
+                    }
+                }, {
+                    "Cle": "96",
+                    "Valeur": {
+                        "IDPIJU": "96",
+                        "AVIACQ": "1"
+                    }
+                }, {
+                    "Cle": "99",
+                    "Valeur": {
+                        "IDPIJU": "99",
+                        "AVIACQ": "1"
+                    }
+                }, {
+                    "Cle": "3",
+                    "Valeur": {
+                        "IDPIJU": "3",
+                        "AVIACQ": "1"
+                    }
+                }, {
+                    "Cle": "203",
+                    "Valeur": {
+                        "IDPIJU": "203",
+                        "AVIACQ": "1"
+                    }
+                }, {
+                    "Cle": "1273",
+                    "Valeur": {
+                        "IDPIJU": "1273",
+                        "AVIACQ": "1"
+                    }
+                }, {
+                    "Cle": "3012",
+                    "Valeur": {
+                        "IDPIJU": "3012",
+                        "AVIACQ": "1"
+                    }
+                }, {
+                    "Cle": "197",
+                    "Valeur": {
+                        "IDPIJU": "197",
+                        "AVIACQ": "1"
+                    }
+                }],
+                "TYPIJU": [{
+                    "Cle": "23",
+                    "Valeur": {
+                        "IDCPJU": "67",
+                        "LPIJU": "Carte d’identité",
+                        "IDPIJU": "23"
+                    }
+                }, {
+                    "Cle": "94",
+                    "Valeur": {
+                        "IDCPJU": "67",
+                        "LPIJU": "Passeport",
+                        "IDPIJU": "94"
+                    }
+                }, {
+                    "Cle": "343",
+                    "Valeur": {
+                        "IDCPJU": "67",
+                        "LPIJU": "Permis de conduire",
+                        "IDPIJU": "343"
+                    }
+                }, {
+                    "Cle": "99343",
+                    "Valeur": {
+                        "IDCPJU": "67",
+                        "LPIJU": "Permis de conduire (ancien modèle)",
+                        "IDPIJU": "99343"
+                    }
+                }, {
+                    "Cle": "196",
+                    "Valeur": {
+                        "IDCPJU": "67",
+                        "LPIJU": "Extrait d’acte de naissance",
+                        "IDPIJU": "196"
+                    }
+                }, {
+                    "Cle": "194",
+                    "Valeur": {
+                        "IDCPJU": "67",
+                        "LPIJU": "Livret de famille",
+                        "IDPIJU": "194"
+                    }
+                }, {
+                    "Cle": "941",
+                    "Valeur": {
+                        "IDCPJU": "68",
+                        "LPIJU": "Attestation assurance habitation ",
+                        "IDPIJU": "941"
+                    }
+                }, {
+                    "Cle": "92",
+                    "Valeur": {
+                        "IDCPJU": "68",
+                        "LPIJU": "Facture téléphone fixe ",
+                        "IDPIJU": "92"
+                    }
+                }, {
+                    "Cle": "99992",
+                    "Valeur": {
+                        "IDCPJU": "68",
+                        "LPIJU": "Facture énergie/eau",
+                        "IDPIJU": "99992"
+                    }
+                }, {
+                    "Cle": "97",
+                    "Valeur": {
+                        "IDCPJU": "68",
+                        "LPIJU": "Avis d’imposition (foncière / habitation)",
+                        "IDPIJU": "97"
+                    }
+                }, {
+                    "Cle": "96",
+                    "Valeur": {
+                        "IDCPJU": "68",
+                        "LPIJU": "Quittance de loyer",
+                        "IDPIJU": "96"
+                    }
+                }, {
+                    "Cle": "99",
+                    "Valeur": {
+                        "IDCPJU": "68",
+                        "LPIJU": "Attestation d’hébergement",
+                        "IDPIJU": "99"
+                    }
+                }, {
+                    "Cle": "3",
+                    "Valeur": {
+                        "IDCPJU": "111",
+                        "LPIJU": "Dernier bulletin de salaire ",
+                        "IDPIJU": "3"
+                    }
+                }, {
+                    "Cle": "203",
+                    "Valeur": {
+                        "IDCPJU": "111",
+                        "LPIJU": "Dernier avis d’imposition ",
+                        "IDPIJU": "203"
+                    }
+                }, {
+                    "Cle": "1273",
+                    "Valeur": {
+                        "IDCPJU": "111",
+                        "LPIJU": "Avis / certificat de non-imposition ",
+                        "IDPIJU": "1273"
+                    }
+                }, {
+                    "Cle": "3012",
+                    "Valeur": {
+                        "IDCPJU": "111",
+                        "LPIJU": "Dernier relevé de pension ",
+                        "IDPIJU": "3012"
+                    }
+                }, {
+                    "Cle": "197",
+                    "Valeur": {
+                        "IDCPJU": "111",
+                        "LPIJU": "Carte d’étudiant",
+                        "IDPIJU": "197"
+                    }
+                }],
+                "COSHBAMB": [{
+                    "Cle": "00000000001",
+                    "Valeur": {
+                        "CSUHYG": "00000000001",
+                        "CSUHY1": "1"
+                    }
+                }, {
+                    "Cle": "00000000002",
+                    "Valeur": {
+                        "CSUHYG": "00000000002",
+                        "CSUHY1": "2"
+                    }
+                }, {
+                    "Cle": "00000000003",
+                    "Valeur": {
+                        "CSUHYG": "00000000003",
+                        "CSUHY1": "3"
+                    }
+                }, {
+                    "Cle": "00000000004",
+                    "Valeur": {
+                        "CSUHYG": "00000000004",
+                        "CSUHY1": "4"
+                    }
+                }, {
+                    "Cle": "00000000034",
+                    "Valeur": {
+                        "CSUHYG": "00000000034",
+                        "CSUHY1": "4"
+                    }
+                }, {
+                    "Cle": "00000000035",
+                    "Valeur": {
+                        "CSUHYG": "00000000035",
+                        "CSUHY1": "4"
+                    }
+                }, {
+                    "Cle": "00000000005",
+                    "Valeur": {
+                        "CSUHYG": "00000000005",
+                        "CSUHY1": "5"
+                    }
+                }, {
+                    "Cle": "00000000006",
+                    "Valeur": {
+                        "CSUHYG": "00000000006",
+                        "CSUHY1": "6"
+                    }
+                }, {
+                    "Cle": "00000000007",
+                    "Valeur": {
+                        "CSUHYG": "00000000007",
+                        "CSUHY1": "7"
+                    }
+                }, {
+                    "Cle": "00000000008",
+                    "Valeur": {
+                        "CSUHYG": "00000000008",
+                        "CSUHY1": "8"
+                    }
+                }, {
+                    "Cle": "00000000009",
+                    "Valeur": {
+                        "CSUHYG": "00000000009",
+                        "CSUHY1": "9"
+                    }
+                }, {
+                    "Cle": "00000000010",
+                    "Valeur": {
+                        "CSUHYG": "00000000010",
+                        "CSUHY1": "10"
+                    }
+                }, {
+                    "Cle": "00000000011",
+                    "Valeur": {
+                        "CSUHYG": "00000000011",
+                        "CSUHY1": "11"
+                    }
+                }, {
+                    "Cle": "00000000012",
+                    "Valeur": {
+                        "CSUHYG": "00000000012",
+                        "CSUHY1": "12"
+                    }
+                }, {
+                    "Cle": "00000000013",
+                    "Valeur": {
+                        "CSUHYG": "00000000013",
+                        "CSUHY1": "13"
+                    }
+                }, {
+                    "Cle": "00000000014",
+                    "Valeur": {
+                        "CSUHYG": "00000000014",
+                        "CSUHY1": "14"
+                    }
+                }, {
+                    "Cle": "00000000036",
+                    "Valeur": {
+                        "CSUHYG": "00000000036",
+                        "CSUHY1": "14"
+                    }
+                }, {
+                    "Cle": "00000000037",
+                    "Valeur": {
+                        "CSUHYG": "00000000037",
+                        "CSUHY1": "14"
+                    }
+                }, {
+                    "Cle": "00000000038",
+                    "Valeur": {
+                        "CSUHYG": "00000000038",
+                        "CSUHY1": "14"
+                    }
+                }, {
+                    "Cle": "00000000016",
+                    "Valeur": {
+                        "CSUHYG": "00000000016",
+                        "CSUHY1": "15"
+                    }
+                }, {
+                    "Cle": "00000000017",
+                    "Valeur": {
+                        "CSUHYG": "00000000017",
+                        "CSUHY1": "16"
+                    }
+                }, {
+                    "Cle": "00000000018",
+                    "Valeur": {
+                        "CSUHYG": "00000000018",
+                        "CSUHY1": "17"
+                    }
+                }, {
+                    "Cle": "00000000019",
+                    "Valeur": {
+                        "CSUHYG": "00000000019",
+                        "CSUHY1": "18"
+                    }
+                }, {
+                    "Cle": "00000000031",
+                    "Valeur": {
+                        "CSUHYG": "00000000031",
+                        "CSUHY1": "18"
+                    }
+                }, {
+                    "Cle": "00000000032",
+                    "Valeur": {
+                        "CSUHYG": "00000000032",
+                        "CSUHY1": "18"
+                    }
+                }, {
+                    "Cle": "00000000033",
+                    "Valeur": {
+                        "CSUHYG": "00000000033",
+                        "CSUHY1": "18"
+                    }
+                }, {
+                    "Cle": "00000000020",
+                    "Valeur": {
+                        "CSUHYG": "00000000020",
+                        "CSUHY1": "19"
+                    }
+                }, {
+                    "Cle": "00000000026",
+                    "Valeur": {
+                        "CSUHYG": "00000000026",
+                        "CSUHY1": "19"
+                    }
+                }, {
+                    "Cle": "00000000029",
+                    "Valeur": {
+                        "CSUHYG": "00000000029",
+                        "CSUHY1": "19"
+                    }
+                }, {
+                    "Cle": "00000000030",
+                    "Valeur": {
+                        "CSUHYG": "00000000030",
+                        "CSUHY1": "19"
+                    }
+                }, {
+                    "Cle": "00000000022",
+                    "Valeur": {
+                        "CSUHYG": "00000000022",
+                        "CSUHY1": "19"
+                    }
+                }, {
+                    "Cle": "00000000021",
+                    "Valeur": {
+                        "CSUHYG": "00000000021",
+                        "CSUHY1": "20"
+                    }
+                }, {
+                    "Cle": "00000000023",
+                    "Valeur": {
+                        "CSUHYG": "00000000023",
+                        "CSUHY1": "21"
+                    }
+                }, {
+                    "Cle": "00000000024",
+                    "Valeur": {
+                        "CSUHYG": "00000000024",
+                        "CSUHY1": "22"
+                    }
+                }, {
+                    "Cle": "00000000025",
+                    "Valeur": {
+                        "CSUHYG": "00000000025",
+                        "CSUHY1": "23"
+                    }
+                }, {
+                    "Cle": "00000000027",
+                    "Valeur": {
+                        "CSUHYG": "00000000027",
+                        "CSUHY1": "24"
+                    }
+                }, {
+                    "Cle": "00000000028",
+                    "Valeur": {
+                        "CSUHYG": "00000000028",
+                        "CSUHY1": "25"
+                    }
+                }, {
+                    "Cle": "00000000015",
+                    "Valeur": {
+                        "CSUHYG": "00000000015",
+                        "CSUHY1": "25"
+                    }
+                }, {
+                    "Cle": "00000000039",
+                    "Valeur": {
+                        "CSUHYG": "00000000039",
+                        "CSUHY1": "25"
+                    }
+                }]
+            },
+            "ticket": "2016-07-25"
+        }
+    }
+}

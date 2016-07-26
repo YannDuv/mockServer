@@ -1,0 +1,134 @@
+{
+    ":envCode/iphoneservice/myAgency/:userId/:crId/:partnerId/myAgencyAndMyAdvisor": {
+        "errors": [],
+        "warnings": [],
+        "infos": [{
+            "message": "getInfosAgentAgence"
+        }, {
+            "message": "OK"
+        }],
+        "infosAgence": {
+            "idEltStructure": "00480",
+            "libEltStructure": "CREDIT AGRICOLE                 ",
+            "numTelephone": "       0450400554",
+            "adresse1": "FERNEY VOLTAIRE                 ",
+            "adresse2": "BATIMENT A                      ",
+            "adresse3": "11 AVENUE VOLTAIRE              ",
+            "adresse4": "ZA DES ALOUETTES                ",
+            "adresse5": "01210 FERNEY VOLTAIRE           ",
+            "codePays": "FR",
+            "mail": "",
+            "listeJoursOuverture": [{
+                "libelleJour": "MARDI",
+                "listePlagesHoraires": [{
+                    "heureDebut": "08:50",
+                    "heureFin": "12:00"
+                }, {
+                    "heureDebut": "13:50",
+                    "heureFin": "18:05"
+                }]
+            }, {
+                "libelleJour": "MERCREDI",
+                "listePlagesHoraires": [{
+                    "heureDebut": "08:50",
+                    "heureFin": "12:00"
+                }, {
+                    "heureDebut": "13:50",
+                    "heureFin": "18:05"
+                }]
+            }, {
+                "libelleJour": "JEUDI",
+                "listePlagesHoraires": [{
+                    "heureDebut": "08:50",
+                    "heureFin": "12:00"
+                }, {
+                    "heureDebut": "14:30",
+                    "heureFin": "18:05"
+                }]
+            }, {
+                "libelleJour": "VENDREDI",
+                "listePlagesHoraires": [{
+                    "heureDebut": "08:50",
+                    "heureFin": "12:00"
+                }, {
+                    "heureDebut": "13:50",
+                    "heureFin": "19:05"
+                }]
+            }, {
+                "libelleJour": "SAMEDI",
+                "listePlagesHoraires": [{
+                    "heureDebut": "08:50",
+                    "heureFin": "15:05"
+                }]
+            }]
+        },
+        "infosAgent": {
+            "idAgent": "03473",
+            "idPosteFonctionnel": "",
+            "codeCivilite": "",
+            "prenom": "NADINE",
+            "nom": "COLLILIEUX",
+            "mail": "OW60002.DEVTUBRANCHEA@HOM.CA-TECHNOLOGIES.FR",
+            "numTelephone": "04.37.46.37.38",
+            "codeFonction": "",
+            "typeAgent": "AP"
+        }
+    },
+    ":envCode/iphoneservice/geoLocation/sosNumbers": {
+        "errors": [],
+        "warnings": [],
+        "infos": [{
+            "message": "findSosNumbers"
+        }, {
+            "message": "OK"
+        }],
+        "sosThemes": [{
+            "label": "Carte bancaire",
+            "id": "CB",
+            "sosNumbers": [{
+                "label": "Centre national d'opposition des Cartes Crédit Agricole",
+                "phone": "+33 9 69 39 92 91",
+                "callfee": "prix d'un appel local"
+            }, {
+                "label": "Centre national d'opposition des Cartes Crédit Agricole (depuis l'étranger)",
+                "phone": "+33 9 69 39 92 91",
+                "callfee": "communication non surtaxée, coût selon opérateur"
+            }]
+        }, {
+            "label": "Chèque",
+            "id": "",
+            "sosNumbers": [{
+                "label": "Centre National d'Appels Chèques Perdus ou Volés",
+                "phone": "+33 9 69 39 92 91",
+                "callfee": "numéro non surtaxé, coût selon opérateur"
+            }]
+        }, {
+            "label": "Assurance",
+            "id": "",
+            "sosNumbers": [{
+                "label": "Déclaration de sinistre Auto",
+                "phone": "0 800 810 812",
+                "callfee": "Appel gratuit depuis un poste fixe"
+            }, {
+                "label": "Déclaration de sinistre Habitation",
+                "phone": "0 800 810 812",
+                "callfee": "Appel gratuit depuis un poste fixe"
+            }, {
+                "label": "Déclaration de sinistre Garantie des accidents de la Vie",
+                "phone": "0 800 810 812",
+                "callfee": "Appel gratuit depuis un poste fixe"
+            }, {
+                "label": "Protection juridique Pleins Droits : vous avez un litige ?",
+                "phone": "0 800 813 810",
+                "callfee": "Appel gratuit depuis un poste fixe"
+            }]
+        }, {
+            "label": "Complémentaire santé",
+            "id": "",
+            "sosNumbers": [{
+                "label": "Assistance",
+                "phone": "+33140255848"
+            }]
+        }]
+    }
+}

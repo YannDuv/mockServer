@@ -1,0 +1,30 @@
+{
+    ":envCode/iphoneservice/schedule/:userId/:crId/:partnerId/appointments": {
+        "errors": [],
+        "warnings": [],
+        "infos": [{
+            "message": "getRdvExistants"
+        }, {
+            "message": "OK"
+        }],
+        "agendaClient": {
+            "nbRDVMax": 4,
+            "idEmacoClient": "06632734",
+            "listeProchainsRdv": []
+        }
+    },
+    ":envCode/iphoneservice/schedule/:userId/:crId/:partnerId/qualification": {
+        "errors": [{
+            "code": "TechnicalError",
+            "message": "Service momentanément indisponible. Si le problème persiste, veuillez contacter votre agence -- TECHNICAL -- 99 Erreur Technique",
+            "id": "TechnicalError#2016-07-25 10:47:42.925"
+        }],
+        "warnings": [],
+        "infos": [{
+            "message": "getQualificationRDV"
+        }, {
+            "message": "KO"
+        }],
+        "qualificationsRDV": []
+    }
+}

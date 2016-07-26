@@ -1,0 +1,13 @@
+{
+    ":envCode/iphoneservice/configuration/:userId/:crId/:partnerId/profiles/ghostaccounts": {
+        "errors": [],
+        "warnings": [],
+        "infos": [{
+            "message": "getGhostAccounts"
+        }, {
+            "message": "OK"
+        }],
+        "lastOperationRetrievalDate": "20160725",
+        "account": []
+    }
+}

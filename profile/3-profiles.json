@@ -1,0 +1,39 @@
+{
+    ":envCode/iphoneservice/configuration/:userId/:crId/:partnerId/profiles/operations": {
+        "errors": [],
+        "warnings": [],
+        "infos": [{
+            "message": "getOperations"
+        }, {
+            "message": "OK"
+        }],
+        "operation": []
+    },
+    ":envCode/iphoneservice/notifications/:userId/:crId/:partnerId/configuration": {},
+    ":envCode/iphoneservice/authentication/:userId/:crId/:partnerId/getPerimetre": {
+        "errors": [],
+        "warnings": [],
+        "infos": [{
+            "message": "getPerimetre"
+        }, {
+            "message": "OK"
+        }],
+        "perimetresList": [{
+            "idCael": "6000099",
+            "crId": "878",
+            "libPerim": "Pro - app mocks"
+        }, {
+            "idCael": "6000100",
+            "crId": "878",
+            "libPerim": "Part - app mocks"
+        }, {
+            "idCael": "62226558921",
+            "crId": "878",
+            "libPerim": "Ipsum - 62226558921"
+        }, {
+            "idCael": "62232209955",
+            "crId": "878",
+            "libPerim": "Lorem - 62232209955"
+        }]
+    }
+}
