@@ -32,32 +32,37 @@ function mergeJSONs(arr) {
 };
 
 function mergeJSON(a, b) {
-      for (let z in b) {
-           a[z] = b[z];
-      }
-      return a;
+  for (let z in b) {
+    a[z] = b[z];
+  }
+  return a;
 };
 
 fs.writeFile(generatedFile, JSON.stringify(mergeJSONs(jsonFiles)), (err) => {
-    if(err) {
-         console.error(err);
-     } else {
-         console.log("JSON saved to db.json");
+  if(err) {
+    console.error(err);
+  } else {
+    console.log("JSON saved to db.json");
 
-         let router = jsonServer.router(generatedFile);
+    let router = jsonServer.router(generatedFile);
 
-         // Set default middlewares (logger, static, cors and no-cache)
-         server.use(middlewares)
+    // Set default middlewares (logger, static, cors and no-cache)
+    server.use(middlewares)
 
-         // Add custom routes before JSON Server router
-         server.get('/:envCode/iphoneservice/authentication/grid', function (req, res) {
-           res.sendFile(__dirname + '/public/img/grid.jpeg');
-         });
+    // Add custom routes before JSON Server router
+    server.get('/:envCode/iphoneservice/authentication/grid', function (req, res) {
+      res.sendFile(__dirname +'/public/img/grid.jpeg');
+    });
 
-         // Use default router
-         server.use(router)
-         server.listen(port, function () {
-           console.log('JSON Server is running on http://localhost:'+ port);
-         })
-     }
+    // List all the ws
+    server.get('/listWs', function (req, res) {
+      res.send(JSON.parse(fs.readFileSync(__dirname +'/'+ generatedFile)));
+    });
+
+    // Use default router
+    server.use(router)
+    server.listen(port, function () {
+      console.log('JSON Server is running on http://localhost:'+ port);
+    })
+  }
 });

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="mockApp">
+<head>
+  <meta charset="utf-8">
+  <title>Mock</title>
+  <link rel="stylesheet" href="/styles/main.css" media="all" charset="utf-8">
+</head>
+<body ng-controller="indexController">
+  <input id="search" type="text" placeholder="Search" ng-model="search" autofocus>
+  <h1>mockApp</h1>
+  <div ng-repeat="item in ws | filter:search" class="toggle">
+    <input type="checkbox" value="selected" id="{{item.url}}" class="toggle-input">
+    <label for="{{item.url}}" class="toggle-label">{{item.url}}</label>
+    <i role="toggle" class="toggle-content">{{item.value}}</i>
+  </div>
+</body>
+<script src="lib/angular/angular.min.js" charset="utf-8"></script>
+<script src="js/app.js" charset="utf-8"></script>
+</html>
