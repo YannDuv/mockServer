@@ -20,6 +20,13 @@ const jsonFiles =  [
   'requests.json'
 ];
 
+function mergeJSON(a, b) {
+  for (let z in b) {
+    a[z] = b[z];
+  }
+  return a;
+}
+
 function mergeJSONs(arr) {
   console.info(`Reading ${arr[0]}...`);
   let result = JSON.parse(fs.readFileSync(arr[0]));
@@ -29,25 +36,18 @@ function mergeJSONs(arr) {
     result = mergeJSON(result, JSON.parse(fs.readFileSync(arr[i])));
   }
   return result;
-};
-
-function mergeJSON(a, b) {
-  for (let z in b) {
-    a[z] = b[z];
-  }
-  return a;
-};
+}
 
 fs.writeFile(generatedFile, JSON.stringify(mergeJSONs(jsonFiles)), (err) => {
   if(err) {
     console.error(err);
   } else {
-    console.log("JSON saved to db.json");
+    console.log('JSON saved to db.json');
 
     let router = jsonServer.router(generatedFile);
 
     // Set default middlewares (logger, static, cors and no-cache)
-    server.use(middlewares)
+    server.use(middlewares);
 
     // Add custom routes before JSON Server router
     server.get('/:envCode/iphoneservice/authentication/grid', function (req, res) {
@@ -60,9 +60,9 @@ fs.writeFile(generatedFile, JSON.stringify(mergeJSONs(jsonFiles)), (err) => {
     });
 
     // Use default router
-    server.use(router)
+    server.use(router);
     server.listen(port, function () {
       console.log('JSON Server is running on http://localhost:'+ port);
-    })
+    });
   }
 });

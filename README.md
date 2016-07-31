@@ -6,6 +6,8 @@ Requires :
 
 Terminal :
 * _npm install -g json-server_
+* _mkdir build_
+* _bower install_
 
 ## Run
 ```
