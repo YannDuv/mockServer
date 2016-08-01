@@ -29,40 +29,70 @@ function mergeJSON(a, b) {
 
 function mergeJSONs(arr) {
   console.info(`Reading ${arr[0]}...`);
-  let result = JSON.parse(fs.readFileSync(arr[0]));
+  let result = JSON.parse(fs.readFileSync(__dirname +'/api/'+ arr[0]));
 
   for (let i=1; i<arr.length; i++) {
     console.info(`Reading ${arr[i]}...`);
-    result = mergeJSON(result, JSON.parse(fs.readFileSync(arr[i])));
+    result = mergeJSON(result, JSON.parse(fs.readFileSync(__dirname +'/api/'+ arr[i])));
   }
   return result;
 }
 
-fs.writeFile(generatedFile, JSON.stringify(mergeJSONs(jsonFiles)), (err) => {
-  if(err) {
-    console.error(err);
-  } else {
-    console.log('JSON saved to db.json');
+function initServer() {
+  let router = jsonServer.router(generatedFile);
 
-    let router = jsonServer.router(generatedFile);
+  // Set default middlewares (logger, static, cors and no-cache)
+  server.use(middlewares);
 
-    // Set default middlewares (logger, static, cors and no-cache)
-    server.use(middlewares);
+  // Add custom routes before JSON Server router
+  server.get('/:envCode/iphoneservice/authentication/grid', (req, res) => {
+    res.sendFile(__dirname +'/public/img/grid.jpeg');
+  });
 
-    // Add custom routes before JSON Server router
-    server.get('/:envCode/iphoneservice/authentication/grid', function (req, res) {
-      res.sendFile(__dirname +'/public/img/grid.jpeg');
-    });
+  // List all the ws
+  server.get('/listWs', (req, res) => {
+    var results = {};
+    results.get = JSON.parse(fs.readFileSync(__dirname +'/'+ generatedFile)),
+    results.post = JSON.parse(fs.readFileSync(__dirname +'/api/post.json'))
 
-    // List all the ws
-    server.get('/listWs', function (req, res) {
-      res.send(JSON.parse(fs.readFileSync(__dirname +'/'+ generatedFile)));
-    });
+    res.send(results);
+  });
 
-    // Use default router
-    server.use(router);
-    server.listen(port, function () {
-      console.log('JSON Server is running on http://localhost:'+ port);
-    });
+  // Manage post requests
+  server.post('/*', (req, res) => {
+    console.log(`POST - ${req.url}`);
+    let posts = JSON.parse(fs.readFileSync(__dirname +'/api/post.json'));
+    let route;
+
+    for (var path in posts) {
+      route = path.replace(/\/:[a-zA-Z0-9]*\//g, '\/[a-zA-Z0-9]*\/');
+      if (req.url.match(route)) {
+        return res.send(posts[path]);
+      }
+    }
+  });
+
+  // Use default router
+  server.use(router);
+  server.listen(port, function () {
+    console.log('JSON Server is running on http://localhost:'+ port);
+  });
+}
+
+// Check if build folder exists
+fs.access('build/', fs.W_OK, (err) => {
+  if (err) {
+
+    // If not, create one
+    fs.mkdirSync('build');
   }
+
+  // Then, build the generatedFile with all the get API
+  fs.writeFile(generatedFile, JSON.stringify(mergeJSONs(jsonFiles)), (err) => {
+    if(err) {
+      console.error(err);
+    } else {
+      initServer();
+    }
+  });
 });

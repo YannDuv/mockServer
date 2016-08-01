@@ -10,7 +10,7 @@
   <h1>mockApp</h1>
   <div ng-repeat="item in ws | filter:search" class="toggle">
     <input type="checkbox" value="selected" id="{{item.url}}" class="toggle-input">
-    <label for="{{item.url}}" class="toggle-label">{{item.url}}</label>
+    <label for="{{item.url}}" class="toggle-label">{{item.method}} - {{item.url}}</label>
     <i role="toggle" class="toggle-content">{{item.value}}</i>
   </div>
 </body>

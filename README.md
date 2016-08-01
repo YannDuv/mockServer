@@ -6,7 +6,6 @@ Requires :
 
 Terminal :
 * _npm install -g json-server_
-* _mkdir build_
 * _bower install_
 
 ## Run
@@ -15,8 +14,8 @@ cd my_path
 node server.js
 ```
 
-## Add a new web service
-Open the file *requests.json*.
+## Add a new get web service
+Open the file *api/requests.json*.
 
 There, add a new property to the json file with the name of the url of your web service.
 

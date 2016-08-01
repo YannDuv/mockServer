@@ -1,0 +1,13 @@
+{
+  "/:envCode/authentication/:crId/bascule": {
+    "errors": [],
+    "warnings": [],
+    "infos": [{
+      "message": "basculeProfile"
+    }, {
+      "message": "OK"
+    }],
+    "partnerId": "36450-00000000100-802",
+    "userid": "36450"
+  }
+}
