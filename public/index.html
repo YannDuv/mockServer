@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>Mock</title>
-  <link rel="stylesheet" href="/styles/main.css" media="all" charset="utf-8">
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" media="all" charset="utf-8">
+  <link rel="stylesheet" href="styles/main.css" media="all" charset="utf-8">
 </head>
 <body ng-controller="indexController">
   <input id="search" type="text" placeholder="Search" ng-model="search" autofocus>
@@ -11,9 +12,42 @@
   <div ng-repeat="item in ws | filter:search" class="toggle">
     <input type="checkbox" value="selected" id="{{item.url}}" class="toggle-input">
     <label for="{{item.url}}" class="toggle-label">{{item.method}} - {{item.url}}</label>
-    <i role="toggle" class="toggle-content">{{item.value}}</i>
+    <div role="toggle" class="toggle-content">
+      <i>{{item.value}}</i>
+      <button class="btn btn-default" ng-click="editWs(this)" data-toggle="modal" data-target="#editModal"><i class="glyphicon glyphicon-edit"></i> Edit</button>
+    </div>
   </div>
+
+  <div id="editModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Edit Ws</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <p>
+              {{editWs.method}}
+            </p>
+            <p>
+              {{editWs.url}}
+            </p>
+            <div class="form-group">
+              <textarea class="form-control" rows="3" id="editWs" ng-model="editWs.value"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="editBtn" ng-click="edit()">edit</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="lib/angular/angular.min.js" charset="utf-8"></script>
 <script src="js/app.js" charset="utf-8"></script>
 </html>

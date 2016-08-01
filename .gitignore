@@ -1,2 +1,3 @@
 public/lib/*
 build/db.json
+node_modules/*

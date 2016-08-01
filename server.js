@@ -2,6 +2,7 @@
 
 var fs = require('fs');
 var jsonServer = require('json-server');
+var bodyParser = require('body-parser');
 var middlewares = jsonServer.defaults();
 var server = jsonServer.create();
 const generatedFile = 'build/db.json';
@@ -39,10 +40,12 @@ function mergeJSONs(arr) {
 }
 
 function initServer() {
-  let router = jsonServer.router(generatedFile);
+  let router = jsonServer.router(__dirname +'/'+ generatedFile);
 
   // Set default middlewares (logger, static, cors and no-cache)
   server.use(middlewares);
+  // for parsing application/json
+  server.use(bodyParser.json());
 
   // Add custom routes before JSON Server router
   server.get('/:envCode/iphoneservice/authentication/grid', (req, res) => {
@@ -58,9 +61,33 @@ function initServer() {
     res.send(results);
   });
 
+  // Edit requests
+  server.post('/edit', (req, res) => {
+    console.log(`EDIT - ${req.body.url}`);
+    let fileToEdit;
+    
+    if (req.body.method === 'POST') {
+      fileToEdit = __dirname +'/api/post.json';
+    } else {
+      fileToEdit = __dirname +'/'+ generatedFile;
+    }
+    let apiList = JSON.parse(fs.readFileSync(fileToEdit));
+
+    apiList[req.body.url] = req.body.res;
+
+    fs.writeFile(fileToEdit, JSON.stringify(apiList), (err) => {
+      if(err) {
+        console.error(err);
+      } else {
+        res.send('Everything is awesome !');
+      }
+    });
+  });
+
   // Manage post requests
   server.post('/*', (req, res) => {
     console.log(`POST - ${req.url}`);
+
     let posts = JSON.parse(fs.readFileSync(__dirname +'/api/post.json'));
     let route;
 
@@ -80,19 +107,23 @@ function initServer() {
 }
 
 // Check if build folder exists
-fs.access('build/', fs.W_OK, (err) => {
+fs.access('build/db.json', fs.W_OK, (err) => {
   if (err) {
 
     // If not, create one
-    fs.mkdirSync('build');
-  }
+    fs.mkdir('build', (err) => {
 
-  // Then, build the generatedFile with all the get API
-  fs.writeFile(generatedFile, JSON.stringify(mergeJSONs(jsonFiles)), (err) => {
-    if(err) {
-      console.error(err);
-    } else {
-      initServer();
-    }
-  });
+      // Then, build the generatedFile with all the get API
+      fs.writeFile(generatedFile, JSON.stringify(mergeJSONs(jsonFiles)), (err) => {
+        if(err) {
+          console.error(err);
+        } else {
+          initServer();
+        }
+      });
+    });
+
+  } else {
+    initServer();
+  }
 });

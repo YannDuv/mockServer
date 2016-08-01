@@ -1,0 +1,21 @@
+{
+  "name": "mock",
+  "version": "1.0.0",
+  "description": "## Install Requires : * nodeJs v4 or more",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://yann.duval@git.backelite.com/r/creditagricole/mabanque-json-server.git"
+  },
+  "author": " <Yann Duval yann.duval@backelite.com>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "grunt": "^1.0.1",
+    "grunt-nodemon": "^0.4.2"
+  }
+}
