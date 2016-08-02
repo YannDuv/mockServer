@@ -1,1 +1,24 @@
-{"/:envCode/authentication/:crId/bascule":{"errors":[],"warnings":[],"infos":[{"message":"basculeProfile"},{"message":"OK"}],"partnerId":"36450-00000000100-802","userid":"one"}}
+{
+    "/:envCode/iphoneservice/authentication/:crId/strong": {
+        "accountCode": "333333",
+        "accountNumber": "12345678900",
+        "login": "dummy@debug.com"
+    },
+    "/:envCode/iphoneservice/authentication/:crId/profiles": {
+        "accountCode": "333333",
+        "password": "0000",
+        "accountNumber": "12345678900",
+        "login": "dummy@debug.com"
+    },
+    "/:envCode/authentication/:crId/bascule": {
+        "errors": [],
+        "warnings": [],
+        "infos": [{
+            "message": "basculeProfile"
+        }, {
+            "message": "OK"
+        }],
+        "partnerId": "36450-00000000100-802",
+        "userid": "36450"
+    }
+}

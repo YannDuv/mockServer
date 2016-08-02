@@ -20,7 +20,7 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
     return array;
   }
 
-  $scope.editWs = function(target) {
+  $scope.initEdit = function(target) {
     $('#editBtn').attr('disabled', false);
     $scope.editWs = target.item;
     console.log($scope.editWs.value);

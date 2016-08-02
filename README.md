@@ -5,8 +5,11 @@ Requires :
 * nodeJs v4 or more
 
 Terminal :
-* _npm install -g json-server_
-* _bower install_
+```
+npm install -g json-server
+npm install
+bower install
+```
 
 ## Run
 ```
