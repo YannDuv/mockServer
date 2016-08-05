@@ -1,4 +1,10 @@
 {
+    ":envCode/iphoneservice/notifications/:userId/:crId/:partnerId/association": {
+        "newPushId": "APA91bFZJY7FAfdrWN-kE87iNt5uMR24dJE7eccuVUJQmsBPXkCtBE82ayzMvwnAdvZM8Nu5B1eo1f89234wJMn1Lb3D-gTQK5D1sFE8MYQOmDf8yhgFSL3JeUpFq83ZdYmwWfHKjeCjBDB-TxSTb_oYtMfUaIKtUg",
+        "notificationEnabled": "true",
+        "deviceType": "ANDROID",
+        "pushId": ""
+    },
     "/:envCode/iphoneservice/authentication/:crId/strong": {
         "accountCode": "333333",
         "accountNumber": "12345678900",
@@ -10,7 +16,7 @@
         "accountNumber": "12345678900",
         "login": "dummy@debug.com"
     },
-    "/:envCode/authentication/:crId/bascule": {
+    "/:envCode/authentication/:userId/:crId/:partnerId/bascule": {
         "errors": [],
         "warnings": [],
         "infos": [{

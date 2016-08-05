@@ -67,7 +67,8 @@
             "basculePerimetreActif": true,
             "motifsRDVActif": false,
             "motifsMSActif": true,
-            "sendingSimulation": false
+            "sendingSimulation": false,
+            "isCommandeMonnaieEnable": true
         }
     },
     ":envCode/iphoneservice/configuration/:crId/tablesParametresMobile/:ticket": {

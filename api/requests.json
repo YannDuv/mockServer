@@ -1,4 +1,20 @@
 {
+    ":envCode/iphoneservice/commandemonnaie/:userId/:crId/:partnerId/disponibiliteCommande": {
+        "errors": [],
+        "warnings": [],
+        "infos": [{
+            "message": "disponibiliteCommande"
+        }, {
+            "message": "OK"
+        }],
+        "DisponibiliteCommande": {
+            "montantMaximum": 10000.00,
+            "elemDisponibles": {
+                "pieces": [0.01, 0.02, 1.00],
+                "billets": [5.00, 10.00, 20.00]
+            }
+        }
+    },
     ":envCode/iphoneservice/vitrine/:crId/isResetPwdBamActive": {
         "errors": [],
         "warnings": [],
@@ -8,12 +24,6 @@
             "message": "OK"
         }],
         "isResetPwdActive": false
-    },
-    ":envCode/iphoneservice/notifications/:userId/:crId/:partnerId/association": {
-        "newPushId": "APA91bFZJY7FAfdrWN-kE87iNt5uMR24dJE7eccuVUJQmsBPXkCtBE82ayzMvwnAdvZM8Nu5B1eo1f89234wJMn1Lb3D-gTQK5D1sFE8MYQOmDf8yhgFSL3JeUpFq83ZdYmwWfHKjeCjBDB-TxSTb_oYtMfUaIKtUg",
-        "notificationEnabled": "true",
-        "deviceType": "ANDROID",
-        "pushId": ""
     },
     ":envCode/iphoneservice/portfolio/:userId/:crId/:partnerId/accounts/:accountId/operations": {
         "errors": [],
