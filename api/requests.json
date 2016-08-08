@@ -9,10 +9,34 @@
         }],
         "DisponibiliteCommande": {
             "montantMaximum": 10000.00,
-            "elemDisponibles": {
-                "pieces": [0.01, 0.02, 1.00],
-                "billets": [5.00, 10.00, 20.00]
-            }
+            "pieces": [{
+                "valeur": 0.01,
+                "quantiteDispo": 50
+            }, {
+                "valeur": 0.02,
+                "quantiteDispo": 50
+            }, {
+                "valeur": 0.05,
+                "quantiteDispo": 50
+            }, {
+                "valeur": 0.10,
+                "quantiteDispo": 40
+            }, {
+                "valeur": 0.20,
+                "quantiteDispo": 40
+            }, {
+                "valeur": 0.50,
+                "quantiteDispo": 40
+            }],
+            "billets": [
+                5.00,
+                10.00,
+                20.00,
+                50.00,
+                100.00,
+                200.00,
+                500.00
+            ]
         }
     },
     ":envCode/iphoneservice/vitrine/:crId/isResetPwdBamActive": {

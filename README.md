@@ -3,6 +3,8 @@
 ## Install
 Requires :
 * nodeJs v4 or more
+* grunt ==> _npm install -g grunt-cli_
+* bower ==> _npm install -g bower_
 
 Terminal :
 ```
