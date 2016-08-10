@@ -49,7 +49,7 @@
         "accountNumber": "12345678900",
         "login": "dummy@debug.com"
     },
-    "/:envCode/authentication/:userId/:crId/:partnerId/bascule": {
+    "/:envCode/iphoneservice/authentication/:userId/:crId/:partnerId/bascule": {
         "errors": [],
         "warnings": [],
         "infos": [{

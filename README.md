@@ -5,6 +5,7 @@ Requires :
 * nodeJs v4 or more
 * grunt ==> _npm install -g grunt-cli_
 * bower ==> _npm install -g bower_
+bascule
 
 Terminal :
 ```
@@ -16,7 +17,7 @@ bower install
 ## Run
 ```
 cd my_path
-node server.js
+grunt
 ```
 
 ## Add a new get web service
