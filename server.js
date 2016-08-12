@@ -18,6 +18,7 @@ const jsonFiles =  [
   'profile/7-projects.json',
   'profile/8-rendezVous.json',
   'profile/9-messages.json',
+  'schedule.json',
   'requests.json'
 ];
 
@@ -65,7 +66,7 @@ function initServer() {
   server.post('/edit', (req, res) => {
     console.log(`EDIT - ${req.body.url}`);
     let fileToEdit;
-    
+
     if (req.body.method === 'POST') {
       fileToEdit = __dirname +'/api/post.json';
     } else {
@@ -86,13 +87,11 @@ function initServer() {
 
   // Manage post requests
   server.post('/*', (req, res) => {
-    console.log(`POST - ${req.url}`);
-
     let posts = JSON.parse(fs.readFileSync(__dirname +'/api/post.json'));
     let route;
 
     for (var path in posts) {
-      route = path.replace(/\/:[a-zA-Z0-9]*\//g, '\/[a-zA-Z0-9]*\/');
+      route = path.replace(/\/:[a-zA-Z0-9]*/gi, '\/[a-zA-Z0-9]*');
       if (req.url.match(route)) {
         return res.send(posts[path]);
       }

@@ -16,6 +16,7 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "grunt": "^1.0.1",
-    "grunt-nodemon": "^0.4.2"
+    "grunt-nodemon": "^0.4.2",
+    "mongodb": "^2.2.5"
   }
 }
