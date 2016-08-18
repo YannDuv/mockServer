@@ -55,14 +55,12 @@ function mergeJSONs(arr) {
 }
 
 function initServer() {
-  //let router = jsonServer.router(__dirname +'/'+ generatedFile);
-
   // Set default middlewares (logger, static, cors and no-cache)
   server.use(middlewares);
   // for parsing application/json
   server.use(bodyParser.json());
 
-  // Add custom routes before JSON Server router
+  // Add custom route for CA authentication
   server.get('/:envCode/iphoneservice/authentication/grid', (req, res) => {
     res.sendFile(__dirname +'/public/img/grid.jpeg');
   });
@@ -76,8 +74,18 @@ function initServer() {
 
   // Edit requests
   server.post('/WSedit', (req, res) => {
-    console.info(`EDIT - ${req.body.url}`);
-    let fileToEdit;
+    console.info(`EDIT - ${req.body._id}`);
+
+    Api.findByIdAndUpdate(req.body._id, {$set: {response: req.body.response}}, (err, api) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send();
+      }
+
+      res.send('Everything is awesome !');
+    });
+
+    /*let fileToEdit;
 
     if (req.body.method === 'POST') {
       fileToEdit = __dirname +'/api/post.json';
@@ -94,7 +102,7 @@ function initServer() {
       } else {
         res.send('Everything is awesome !');
       }
-    });
+    });*/
   });
 
   // Manage post requests
@@ -107,13 +115,9 @@ function initServer() {
     mockResponse(req, res, 'GET');
   });
 
-  // Use default router
-  //server.use(router);
   server.listen(port, function () {
     console.info('JSON Server is running on http://localhost:'+ port);
   });
-
-  initDB();
 }
 
 function mockResponse(req, res, method) {
@@ -175,12 +179,14 @@ fs.access('build/db.json', fs.W_OK, (err) => {
         if(err) {
           console.error(err);
         } else {
+          initDB();
           initServer();
         }
       });
     });
 
   } else {
+    initDB();
     initServer();
   }
 });
