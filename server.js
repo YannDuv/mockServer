@@ -3,10 +3,15 @@
 var fs = require('fs');
 var jsonServer = require('json-server');
 var bodyParser = require('body-parser');
-var middlewares = jsonServer.defaults();
-var server = jsonServer.create();
+var mongoose = require('mongoose');
+
+const middlewares = jsonServer.defaults();
+const server = jsonServer.create();
 const generatedFile = 'build/db.json';
 const port = 3000;
+const dbPort = 27017;
+const dbAddress = 'localhost';
+const dbAuthentication = 'mongodb://';
 const jsonFiles =  [
   'authentication.json',
   'profile/1-user.json',
@@ -21,6 +26,13 @@ const jsonFiles =  [
   'schedule.json',
   'requests.json'
 ];
+
+mongoose.connect(dbAuthentication + dbAddress +':'+ dbPort +'/home');
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+	console.log('MongoDB fonctionne correctement.');
+});
 
 function mergeJSON(a, b) {
   for (let z in b) {
@@ -91,7 +103,7 @@ function initServer() {
     let route;
 
     for (var path in posts) {
-      route = path.replace(/\/:[a-zA-Z0-9]*/gi, '\/[a-zA-Z0-9]*');
+      route = path.replace(/\/:[a-zA-Z0-9]*/gi, '\/[a-zA-Z0-9\-]*');
       if (req.url.match(route)) {
         return res.send(posts[path]);
       }

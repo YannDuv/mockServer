@@ -35,5 +35,11 @@ Check the exemple of **/:envCode/iphoneservice/authentication/grid**
 ## Sources
 https://github.com/typicode/json-server
 
+## Docker
+```
+sudo docker tag yann/mock-server 192.168.2.31:5000/yann/mock-server:17-08-2016
+sudo docker push 192.168.2.31:5000/yann/mock-server:17-08-2016
+```
+
 ## Contact
 **yann.duval@backelite.com**
