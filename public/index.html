@@ -7,13 +7,16 @@
   <link rel="stylesheet" href="styles/main.css" media="all" charset="utf-8">
 </head>
 <body ng-controller="indexController">
-  <input id="search" type="text" placeholder="Search" ng-model="search" autofocus>
+  <div id="actionBar">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#newWsModal"><i class="glyphicon glyphicon-plus"></i> Add mock</button>
+    <input id="search" type="text" placeholder="Search" ng-model="search" autofocus>
+  </div>
   <h1>mockApp</h1>
   <div ng-repeat="item in ws | filter:search" class="toggle">
     <input type="checkbox" value="selected" id="{{item.url}}" class="toggle-input">
     <label for="{{item.url}}" class="toggle-label">{{item.method}} - {{item.url}}</label>
     <div role="toggle" class="toggle-content">
-      <i>{{item.value}}</i>
+      <i>{{item.response}}</i>
       <button class="btn btn-default" ng-click="initEdit(this)" data-toggle="modal" data-target="#editModal"><i class="glyphicon glyphicon-edit"></i> Edit</button>
     </div>
   </div>
@@ -34,13 +37,60 @@
               {{editWs.url}}
             </p>
             <div class="form-group">
-              <textarea class="form-control" rows="3" id="editWs" ng-model="editWs.value"></textarea>
+              <textarea class="form-control" rows="3" id="editWs" ng-model="editWs.response"></textarea>
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary" id="editBtn" ng-click="edit()">edit</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+  <div id="newWsModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Edit Ws</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label>Method</label>
+              <select class="form-control" ng-model="newWs.method" placeholder="method">
+                <option selected="true">GET</option>
+                <option>POST</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Url</label>
+              <input type="text" class="form-control" placeholder="path" ng-model="newWs.url"/>
+              <p class="help-block">Path parameters must be preceded by a ":" (e.g. : /path/:pathParam/ok).</p>
+            </div>
+            <div class="form-group">
+              <label>Status</label>
+              <select class="form-control" ng-model="newWs.status" placeholder="status">
+                <option value="200" selected="true">200 Ok</option>
+                <option value="400">400 Bad request</option>
+                <option value="401">401 unauthorized</option>
+                <option value="403">403 forbidden</option>
+                <option value="404">404 not found</option>
+                <option value="500">500 server error</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Response</label>
+              <textarea class="form-control" rows="3" id="editWs" ng-model="newWs.response" placeholder="response"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="createBtn" ng-click="create()">Create</button>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

@@ -5,34 +5,18 @@ var mockApp = angular.module('mockApp', []);
 mockApp.controller('indexController', ['$scope', '$http', function($scope, $http) {
   $scope.ws = [];
 
-  function parseWs(data, method) {
-    let array = [];
-    let item;
-
-    for (var key in data[method]) {
-      item = {};
-      item.value = JSON.stringify(data[method][key]);
-      item.url = key;
-      item.method = method.toUpperCase();
-      array.push(item);
-    }
-
-    return array;
-  }
-
   $scope.initEdit = function(target) {
     $('#editBtn').attr('disabled', false);
     $scope.editWs = target.item;
-    console.log($scope.editWs.value);
-    $scope.editWs.value = $scope.editWs.value.toString();
+    $scope.editWs.response = $scope.editWs.response.toString();
   };
 
   $scope.edit = function() {
     $('#editBtn').attr('disabled', true);
-    $scope.editWs.res = JSON.parse($scope.editWs.value);
+    $scope.editWs.res = JSON.parse($scope.editWs.response);
     console.log($scope.editWs);
 
-    $http.post('edit', $scope.editWs)
+    $http.post('WSedit', $scope.editWs)
       .success((data) => {
         $('#editBtn').attr('disabled', false);
         $('#editModal').modal('hide');
@@ -44,10 +28,29 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
       });
   };
 
+  $scope.create = function () {
+    console.log($scope.newWs);
+
+    $('#createBtn').attr('disabled', true);
+    $scope.newWs.res = JSON.parse($scope.newWs.response);
+
+    $http.post('WSnew', $scope.newWs)
+      .success((data) => {
+        $('#createBtn').attr('disabled', false);
+        $('#newWsModal').modal('hide');
+        $scope.newWs = {};
+        init();
+      })
+      .error((err) => {
+        $('#createBtn').attr('disabled', false);
+        console.error(err);
+      });
+  };
+
   function init() {
-    $http.get('listWs')
+    $http.get('WSlist')
     .success((data) => {
-      $scope.ws = [].concat(parseWs(data, 'get'), parseWs(data, 'post'));
+      $scope.ws = data;
     })
     .error((err) => {
       console.error(err);
