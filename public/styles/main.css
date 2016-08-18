@@ -5,10 +5,13 @@ body {
   padding: 4rem;
 }
 
-#search {
+#actionBar {
   float: right;
+  flex: 1;
+  flex-direction: row;
   margin-top: 25px;
   margin-right: 10%;
+  align-items: center;
 }
 
 .toggle {

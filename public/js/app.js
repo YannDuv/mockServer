@@ -28,6 +28,25 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
       });
   };
 
+  $scope.create = function () {
+    console.log($scope.newWs);
+
+    $('#createBtn').attr('disabled', true);
+    $scope.newWs.res = JSON.parse($scope.newWs.response);
+
+    $http.post('WSnew', $scope.newWs)
+      .success((data) => {
+        $('#createBtn').attr('disabled', false);
+        $('#newWsModal').modal('hide');
+        $scope.newWs = {};
+        init();
+      })
+      .error((err) => {
+        $('#createBtn').attr('disabled', false);
+        console.error(err);
+      });
+  };
+
   function init() {
     $http.get('WSlist')
     .success((data) => {

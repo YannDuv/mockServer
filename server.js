@@ -73,6 +73,20 @@ function initServer() {
   });
 
   // Edit requests
+  server.post('/WSnew', (req, res) => {
+    console.info(`NEW - ${req.body.url}`);
+
+    let api = new Api(req.body);
+    api.save((err) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send();
+      }
+      return res.send('ok');
+    });
+  });
+
+  // Edit requests
   server.post('/WSedit', (req, res) => {
     console.info(`EDIT - ${req.body._id}`);
 
@@ -84,25 +98,6 @@ function initServer() {
 
       res.send('Everything is awesome !');
     });
-
-    /*let fileToEdit;
-
-    if (req.body.method === 'POST') {
-      fileToEdit = __dirname +'/api/post.json';
-    } else {
-      fileToEdit = __dirname +'/'+ generatedFile;
-    }
-    let apiList = JSON.parse(fs.readFileSync(fileToEdit));
-
-    apiList[req.body.url] = req.body.res;
-
-    fs.writeFile(fileToEdit, JSON.stringify(apiList), (err) => {
-      if(err) {
-        console.error(err);
-      } else {
-        res.send('Everything is awesome !');
-      }
-    });*/
   });
 
   // Manage post requests
