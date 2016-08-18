@@ -1,5 +1,5 @@
 {
-    ":envCode/iphoneservice/configuration/:userId/:crId/:partnerId/profiles/categories": {
+    "/:envCode/iphoneservice/configuration/:userId/:crId/:partnerId/profiles/categories": {
         "errors": [],
         "warnings": [],
         "infos": [{
@@ -707,7 +707,7 @@
             }]
         }]
     },
-    ":envCode/iphoneservice/portfolio/:userId/:crId/:partnerId/accounts": {
+    "/:envCode/iphoneservice/portfolio/:userId/:crId/:partnerId/accounts": {
         "errors": [],
         "warnings": [],
         "infos": [{

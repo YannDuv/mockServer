@@ -13,7 +13,7 @@
     <input type="checkbox" value="selected" id="{{item.url}}" class="toggle-input">
     <label for="{{item.url}}" class="toggle-label">{{item.method}} - {{item.url}}</label>
     <div role="toggle" class="toggle-content">
-      <i>{{item.value}}</i>
+      <i>{{item.response}}</i>
       <button class="btn btn-default" ng-click="initEdit(this)" data-toggle="modal" data-target="#editModal"><i class="glyphicon glyphicon-edit"></i> Edit</button>
     </div>
   </div>
@@ -34,7 +34,7 @@
               {{editWs.url}}
             </p>
             <div class="form-group">
-              <textarea class="form-control" rows="3" id="editWs" ng-model="editWs.value"></textarea>
+              <textarea class="form-control" rows="3" id="editWs" ng-model="editWs.response"></textarea>
             </div>
           </form>
         </div>

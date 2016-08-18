@@ -1,5 +1,5 @@
 {
-    ":envCode/iphoneservice/myAgency/:userId/:crId/:partnerId/myAgencyAndMyAdvisor": {
+    "/:envCode/iphoneservice/myAgency/:userId/:crId/:partnerId/myAgencyAndMyAdvisor": {
         "errors": [],
         "warnings": [],
         "infos": [{
@@ -74,7 +74,7 @@
             "typeAgent": "AP"
         }
     },
-    ":envCode/iphoneservice/geoLocation/sosNumbers": {
+    "/:envCode/iphoneservice/geoLocation/sosNumbers": {
         "errors": [],
         "warnings": [],
         "infos": [{

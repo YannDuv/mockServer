@@ -1,5 +1,5 @@
 {
-    ":envCode/iphoneservice/commandeMonnaie/:userId/:crId/:partnerId/disponibiliteCommande": {
+    "/:envCode/iphoneservice/commandeMonnaie/:userId/:crId/:partnerId/disponibiliteCommande": {
         "errors": [],
         "warnings": [],
         "infos": [{
@@ -45,7 +45,7 @@
             ]
         }
     },
-    ":envCode/iphoneservice/vitrine/:crId/isResetPwdBamActive": {
+    "/:envCode/iphoneservice/vitrine/:crId/isResetPwdBamActive": {
         "errors": [],
         "warnings": [],
         "infos": [{
@@ -55,7 +55,7 @@
         }],
         "isResetPwdActive": false
     },
-    ":envCode/iphoneservice/portfolio/:userId/:crId/:partnerId/accounts/:accountId/operations": {
+    "/:envCode/iphoneservice/portfolio/:userId/:crId/:partnerId/accounts/:accountId/operations": {
         "errors": [],
         "warnings": [],
         "infos": [{
@@ -65,7 +65,7 @@
         }],
         "operation": []
     },
-    ":envCode/iphoneservice/portfolio/:userId/:crId/:partnerId/AccountsToTransfers": {
+    "/:envCode/iphoneservice/portfolio/:userId/:crId/:partnerId/AccountsToTransfers": {
         "errors": [],
         "warnings": [],
         "infos": [{
@@ -238,7 +238,7 @@
             "iban": "FR7630003038320005056305604"
         }]
     },
-    ":envCode/iphoneservice/portfolio/:userId/:crId/:partnerId/accounts/balanceHistory": {
+    "/:envCode/iphoneservice/portfolio/:userId/:crId/:partnerId/accounts/balanceHistory": {
         "errors": [],
         "warnings": [],
         "infos": [{
@@ -347,7 +347,7 @@
             }
         }]
     },
-    ":envCode/iphoneservice/configuration/:userId/:crId/:partnerId/profiles/ghostaccounts/balanceHistory": {
+    "/:envCode/iphoneservice/configuration/:userId/:crId/:partnerId/profiles/ghostaccounts/balanceHistory": {
         "errors": [],
         "warnings": [],
         "infos": [{
@@ -357,7 +357,7 @@
         }],
         "accountBalanceHistory": []
     },
-    ":envCode/iphoneservice/configuration/:userId/:crId/:partnerId/myBenefits": {
+    "/:envCode/iphoneservice/configuration/:userId/:crId/:partnerId/myBenefits": {
         "errors": [],
         "warnings": [],
         "infos": [{
@@ -367,7 +367,7 @@
         }],
         "benefitCategories": []
     },
-    ":envCode/iphoneservice/edocument/:userId/:crId/:partnerId/eDocumentsList": {
+    "/:envCode/iphoneservice/edocument/:userId/:crId/:partnerId/eDocumentsList": {
         "errors": [],
         "warnings": [],
         "infos": [{
