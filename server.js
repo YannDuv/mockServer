@@ -10,7 +10,13 @@ const server = jsonServer.create();
 const generatedFile = 'build/db.json';
 const port = 3000;
 const dbPort = 27017;
-const dbAddress = 'localhost';
+
+// For docker
+const dbAddress = 'database';
+
+// For dev
+//const dbAddress = 'localhost';
+
 const dbAuthentication = 'mongodb://';
 const jsonFiles =  [
   'authentication.json',
@@ -120,6 +126,8 @@ function mockResponse(req, res, method) {
     let route;
     let api;
 
+    res.set('Content-Type', 'application/json');
+
     if (err) {
       console.error(err); res.status(500);
     }
@@ -127,7 +135,6 @@ function mockResponse(req, res, method) {
     for (var i=0; i<apis.length; i++) {
       api = apis[i];
       route = api.url.replace(/\/:[a-zA-Z0-9]*/gi, '\/[a-zA-Z0-9\-]*');
-      console.log(route, req.url, req.url.match(route));
       if (req.url.match(route)) {
         return res.status(api.status).send(api.response);
       }

@@ -37,8 +37,9 @@ https://github.com/typicode/json-server
 
 ## Docker
 ```
-sudo docker tag yann/mock-server 192.168.2.31:5000/yann/mock-server:17-08-2016
-sudo docker push 192.168.2.31:5000/yann/mock-server:17-08-2016
+sudo docker build -t yann/mock-server:25-08-2016 --no-cache --rm=true .
+sudo docker tag yann/mock-server:25-08-2016 192.168.2.31:5000/yann/mock-server:25-08-2016
+sudo docker push 192.168.2.31:5000/yann/mock-server:25-08-2016
 ```
 
 ## Contact
