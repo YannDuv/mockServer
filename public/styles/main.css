@@ -5,6 +5,23 @@ body {
   padding: 4rem;
 }
 
+#logo {
+  width: 65px;
+  margin-right: 15px;
+}
+
+.modal-dialog {
+  color: #3c3b3b;
+}
+
+.toggle .label {
+  margin-right: 10px;
+}
+
+.toggle .btn-group {
+  margin-bottom: 15px;
+}
+
 #actionBar {
   float: right;
   flex: 1;

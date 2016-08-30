@@ -28,7 +28,7 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
       });
   };
 
-  $scope.create = function () {
+  $scope.create = function() {
     console.log($scope.newWs);
 
     $('#createBtn').attr('disabled', true);
@@ -43,6 +43,35 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
       })
       .error((err) => {
         $('#createBtn').attr('disabled', false);
+        console.error(err);
+      });
+  };
+
+  $scope.writeJsonFile = function() {
+    $http.get('WSFile')
+      .success((data) => {
+        window.location = data;
+      })
+      .error((err) => {
+        console.error(err);
+      });
+  };
+
+  $scope.initRemove = function(target) {
+    $scope.removeWs = target.item;
+  };
+
+  $scope.remove = function() {
+    $('#removeBtn').attr('disabled', false);
+
+    $http.delete('WSRemove/'+ $scope.removeWs._id)
+      .success((data) => {
+        $('#removeBtn').attr('disabled', false);
+        init();
+        $('#removeWsModal').modal('hide');
+      })
+      .error((err) => {
+        $('#removeBtn').attr('disabled', false);
         console.error(err);
       });
   };

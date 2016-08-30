@@ -99,10 +99,36 @@ function initServer() {
     Api.findByIdAndUpdate(req.body._id, {$set: {response: req.body.response}}, (err, api) => {
       if (err) {
         console.error(err);
-        return res.status(500).send();
+        return res.status(500).send(err);
       }
 
       res.send('Everything is awesome !');
+    });
+  });
+
+  // Export json file with all apis
+  server.get('/WSFile', (req, res) => {
+    let fileName = '/data/apis.json'
+
+    Api.find({}, (err, results) => {
+      fs.writeFile(__dirname +'/public'+ fileName, results, (err) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).send(err);
+        }
+        res.send(fileName);
+      });
+    });
+  });
+
+  // Remove an api
+  server.delete('/WSRemove/:id', (req, res) => {
+    Api.findByIdAndRemove(req.params.id, (err) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send(err);
+      }
+      res.send('BAM ! Well shot :)');
     });
   });
 
