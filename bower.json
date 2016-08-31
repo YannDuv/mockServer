@@ -19,6 +19,7 @@
     "angular": "^1.5.8",
     "bootstrap": "^3.3.7",
     "is_js": "^0.8.0",
-    "font-awesome": "^4.6.3"
+    "font-awesome": "^4.6.3",
+    "pnotify": "^3.0.0"
   }
 }

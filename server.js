@@ -12,10 +12,10 @@ const port = 3000;
 const dbPort = 27017;
 
 // For docker
-const dbAddress = 'database';
+//const dbAddress = 'database';
 
 // For dev
-//const dbAddress = 'localhost';
+const dbAddress = 'localhost';
 
 const dbAuthentication = 'mongodb://';
 const jsonFiles =  [
@@ -74,6 +74,10 @@ function initServer() {
   // List all the ws
   server.get('/WSlist', (req, res) => {
     Api.find({}, (err, results) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send(err);
+      }
       res.send(results);
     });
   });
@@ -86,7 +90,7 @@ function initServer() {
     api.save((err) => {
       if (err) {
         console.error(err);
-        return res.status(500).send();
+        return res.status(500).send(err);
       }
       return res.send('ok');
     });
@@ -102,7 +106,7 @@ function initServer() {
         return res.status(500).send(err);
       }
 
-      res.send('Everything is awesome !');
+      return res.send('Everything is awesome !');
     });
   });
 
@@ -142,6 +146,16 @@ function initServer() {
     mockResponse(req, res, 'GET');
   });
 
+  // Manage delete requests
+  server.delete('/*', (req, res) => {
+    mockResponse(req, res, 'DELETE');
+  });
+
+  // Manage put requests
+  server.put('/*', (req, res) => {
+    mockResponse(req, res, 'PUT');
+  });
+
   server.listen(port, function () {
     console.info('JSON Server is running on http://localhost:'+ port);
   });
@@ -165,7 +179,7 @@ function mockResponse(req, res, method) {
         return res.status(api.status).send(api.response);
       }
     }
-    res.status(404).send();
+    res.status(404).send(`Tudieu ! 404 Error.\nRequest not found for path: ${req.url}.\nMethod: ${req.method}.`);
   });
 }
 

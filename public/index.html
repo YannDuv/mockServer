@@ -1,146 +1,167 @@
 <!DOCTYPE html>
 <html ng-app="mockApp">
+
 <head>
-  <meta charset="utf-8">
-  <title>mockApp</title>
-  <link rel="icon" type="image/png" href="img/favicon_mock.png">
-  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" media="all" charset="utf-8">
-  <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css" media="all" charset="utf-8">
-  <link rel="stylesheet" href="styles/main.css" media="all" charset="utf-8">
+    <meta charset="utf-8">
+    <title>mockApp</title>
+    <link rel="icon" type="image/png" href="img/favicon_mock.png">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" media="all" charset="utf-8">
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css" media="all" charset="utf-8">
+    <link rel="stylesheet" href="styles/main.css" media="all" charset="utf-8">
+    <link rel="stylesheet" href="lib/pnotify/dist/pnotify.css" media="all" charset="utf-8">
 </head>
+
 <body ng-controller="indexController">
-  <div id="actionBar">
-    <div class="btn-group">
-      <button class="btn btn-primary" data-toggle="modal" data-target="#newWsModal"><i class="fa fa-plus"></i> Add mock</button>
-      <button class="btn btn-default" ng-click="writeJsonFile()"><i class="fa fa-download"></i> get db</button>
+    <div id="actionBar">
+        <div class="btn-group">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#newWsModal"><i class="fa fa-plus"></i> Add mock</button>
+            <button class="btn btn-default" ng-click="writeJsonFile()"><i class="fa fa-download"></i> get db</button>
+        </div>
+        <input id="search" type="text" placeholder="Search" ng-model="search" autofocus>
     </div>
-    <input id="search" type="text" placeholder="Search" ng-model="search" autofocus>
-  </div>
-  <h1><img id="logo" src="img/favicon_mock.png" />mockApp</h1>
+    <h1><img id="logo" src="img/favicon_mock.png" />mockApp</h1>
 
-  <div ng-repeat="item in ws | filter:search" class="toggle">
-    <input type="checkbox" value="selected" id="{{item.url}}" class="toggle-input">
-    <label for="{{item.url}}" class="toggle-label">
-      <span class="label label-primary" ng-if="item.method==='GET'">{{item.method}}</span>
-      <span class="label label-info" ng-if="item.method==='POST'">{{item.method}}</span>
-       {{item.url}}</label>
-    <div role="toggle" class="toggle-content">
-      <div class="btn-group">
-        <button class="btn btn-default" ng-click="initEdit(this)" data-toggle="modal" data-target="#editModal"><i class="glyphicon glyphicon-edit"></i> Edit</button>
-        <button class="btn btn-danger" ng-click="initRemove(this)" data-toggle="modal" data-target="#removeWsModal"><i class="glyphicon glyphicon-trash"></i> Remove</button>
-      </div>
-      <br>
-      <i>{{item.response}}</i>
+    <div ng-repeat="item in ws | filter:search | orderBy:'url'" class="toggle">
+        <input type="checkbox" value="selected" id="{{item.url}}" class="toggle-input">
+        <label for="{{item.url}}" class="toggle-label">
+            <span class="label label-info" ng-if="item.method==='POST'">{{item.method}}</span>
+            <span class="label label-danger" ng-if="item.method==='DELETE'">{{item.method}}</span>
+            <span class="label label-primary" ng-if="item.method==='GET'">{{item.method}}</span>
+            <span class="label label-success" ng-if="item.method==='PUT'">{{item.method}}</span> {{item.url}}
+        </label>
+        <div role="toggle" class="toggle-content">
+            <div class="btn-group">
+                <button class="btn btn-default" ng-click="initEdit(this)" data-toggle="modal" data-target="#editModal"><i class="glyphicon glyphicon-edit"></i> Edit</button>
+                <button class="btn btn-danger" ng-click="initRemove(this)" data-toggle="modal" data-target="#removeWsModal"><i class="glyphicon glyphicon-trash"></i> Remove</button>
+            </div>
+            <br>
+            <i>{{item.response}}</i>
+        </div>
     </div>
-  </div>
 
-  <div id="editModal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Edit Ws</h4>
-        </div>
-        <div class="modal-body">
-          <form>
-            <p>
-              {{editWs.method}}
-            </p>
-            <p>
-              {{editWs.url}}
-            </p>
-            <div class="form-group">
-              <textarea class="form-control" rows="12" id="editWs" ng-model="editWs.response"></textarea>
+    <div id="editModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form ng-submit="edit()">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title">Edit Ws</h4>
+                  </div>
+                  <div class="modal-body">
+                          <p>
+                              {{editWs.method}}
+                          </p>
+                          <p>
+                              {{editWs.url}}
+                          </p>
+                          <div class="form-group">
+                              <textarea class="form-control" rows="12" id="editWs" ng-model="editWs.response"></textarea>
+                          </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancel</button>
+                      <button type="submit" class="btn btn-primary" id="editBtn">edit <i class="fa fa-pencil-square-o"></i></button>
+                  </div>
+              </form>
             </div>
-          </form>
+            <!-- /.modal-content -->
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancel</button>
-          <button type="button" class="btn btn-primary" id="editBtn" ng-click="edit()">edit <i class="fa fa-pencil-square-o"></i></button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 
-  <div id="newWsModal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Create Ws</h4>
+    <div id="newWsModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form ng-submit="create()">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Create Ws</h4>
+                    </div>
+                    <div class="modal-body" ng-init="newWs = {method: 'GET', status: '200'}">
+                        <div class="form-group">
+                            <label>Method</label>
+                            <select class="form-control" ng-model="newWs.method" placeholder="method">
+                                <option selected="selected">GET</option>
+                                <option>POST</option>
+                                <option>PUT</option>
+                                <option>DELETE</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Url</label>
+                            <input type="text" class="form-control" placeholder="path" ng-model="newWs.url" required/>
+                            <p class="help-block">Path parameters must be preceded by a ":" (e.g. : /path/:pathParam/ok).</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select class="form-control" ng-model="newWs.status" placeholder="status">
+                                <option value="200" selected="selected">200 Ok</option>
+                                <option value="400">400 Bad request</option>
+                                <option value="401">401 unauthorized</option>
+                                <option value="403">403 forbidden</option>
+                                <option value="404">404 not found</option>
+                                <option value="500">500 server error</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Response</label>
+                            <textarea class="form-control" rows="7" id="editWs" ng-model="newWs.response" placeholder="response"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="createBtn">Create <i class="fa fa-check"></i></button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
         </div>
-        <div class="modal-body" ng-init="newWs = {method: 'GET', status: '200'}">
-          <form>
-            <div class="form-group">
-              <label>Method</label>
-              <select class="form-control" ng-model="newWs.method" placeholder="method">
-                <option selected="selected">GET</option>
-                <option>POST</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Url</label>
-              <input type="text" class="form-control" placeholder="path" ng-model="newWs.url"/>
-              <p class="help-block">Path parameters must be preceded by a ":" (e.g. : /path/:pathParam/ok).</p>
-            </div>
-            <div class="form-group">
-              <label>Status</label>
-              <select class="form-control" ng-model="newWs.status" placeholder="status">
-                <option value="200" selected="selected">200 Ok</option>
-                <option value="400">400 Bad request</option>
-                <option value="401">401 unauthorized</option>
-                <option value="403">403 forbidden</option>
-                <option value="404">404 not found</option>
-                <option value="500">500 server error</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Response</label>
-              <textarea class="form-control" rows="7" id="editWs" ng-model="newWs.response" placeholder="response"></textarea>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancel</button>
-          <button type="button" class="btn btn-primary" id="createBtn" ng-click="create()">Create <i class="fa fa-check"></i></button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 
-  <div id="removeWsModal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Remove Ws</h4>
+    <div id="removeWsModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form ng-submit="remove()">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Remove Ws</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure to remove :</p>
+                        <b><q>
+                        <span class="label label-info" ng-if="removeWs.method==='POST'">{{removeWs.method}}</span>
+                        <span class="label label-danger" ng-if="removeWs.method==='DELETE'">{{removeWs.method}}</span>
+                        <span class="label label-primary" ng-if="removeWs.method==='GET'">{{removeWs.method}}</span>
+                        <span class="label label-success" ng-if="removeWs.method==='PUT'">{{removeWs.method}}</span>
+                        {{removeWs.url}} ?
+                      </q></b>
+                        <p>Beware the ninja warrior in your room is waiting for your answer.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancel</button>
+                        <button type="submit" class="btn btn-danger" id="removeBtn">Remove <i class="fa fa-trash"></i></button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
         </div>
-        <div class="modal-body">
-          <p>Are you sure to remove :</p>
-          <b><q>
-            <span class="label label-primary" ng-if="removeWs.method==='GET'">{{removeWs.method}}</span>
-            <span class="label label-info" ng-if="removeWs.method==='POST'">{{removeWs.method}}</span>
-            {{removeWs.url}} ?
-          </q></b>
-          <p>Beware the ninja warrior in your room is waiting for your answer.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancel</button>
-          <button type="button" class="btn btn-danger" id="removeBtn" ng-click="remove()">Remove <i class="fa fa-trash"></i></button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="lib/angular/angular.min.js" charset="utf-8"></script>
 <script src="lib/is_js/is.min.js" charset="utf-8"></script>
+<script src="lib/pnotify/dist/pnotify.js" charset="utf-8"></script>
 <script type="text/javascript">
-if (is.safari()) {
-  // https://developer.apple.com/safari/download/
-  alert('Not supported by Safari, working hard on it...');
-}
+    if (is.safari()) {
+        alert('Not supported by Safari. See latest Safari version https://developer.apple.com/safari/download');
+    }
 </script>
 <script src="js/app.js" charset="utf-8"></script>
+
 </html>
