@@ -93,7 +93,7 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
   };
 
   $scope.writeJsonFile = function() {
-    $http.get('WSFile')
+    $http.get('WSfile')
       .success((data) => {
         window.location = data;
       })
