@@ -14,14 +14,27 @@
 <body ng-controller="indexController">
     <div id="actionBar">
         <div class="btn-group">
-            <button class="btn btn-primary" data-toggle="modal" data-target="#newWsModal"><i class="fa fa-plus"></i> Add mock</button>
-            <button class="btn btn-default" ng-click="writeJsonFile()"><i class="fa fa-download"></i> get db</button>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#newWsModal" title="Create a new mocked api"><i class="fa fa-plus"></i> Add mock</button>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#newProjectModal" title="Create a new project make all the apis use the same baseURL"><i class="fa fa-folder"></i> New project</button>
+            <button class="btn btn-default" ng-click="writeJsonFile()" title="You sure don't trust the developer of this site to keep all your mocks for you, don't you ?"><i class="fa fa-download"></i> get db</button>
         </div>
         <input id="search" type="text" placeholder="Search" ng-model="search" autofocus>
     </div>
     <h1><img id="logo" src="img/favicon_mock.png" />mockApp</h1>
 
-    <div ng-repeat="item in ws | filter:search | orderBy:'url'" class="toggle">
+    <div class="row" style="margin-bottom: 10px">
+      <div class="col-md-3 col-md-offset-2">
+        <form class="form-inline">
+          <label>Project</label>
+          <select class="form-control" ng-model="selectedProject" ng-options="project.name for project in projects track by project.key" ng-change="refreshApis()"></select>
+        </form>
+      </div>
+        <div class="col-md-3">
+          <span>base URL = <b>{{baseURL}}</b></span>
+        </div>
+    </div>
+
+    <div ng-repeat="item in ws | filter:search | orderBy:'url'" class="toggle row">
         <input type="checkbox" value="selected" id="{{item.url}}" class="toggle-input">
         <label for="{{item.url}}" class="toggle-label">
             <span class="label label-info" ng-if="item.method==='POST'">{{item.method}}</span>
@@ -145,6 +158,37 @@
                         <button type="submit" class="btn btn-danger" id="removeBtn">Remove <i class="fa fa-trash"></i></button>
                     </div>
                 </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <div id="newProjectModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form ng-submit="createProject()">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title">Create project</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" placeholder="Project name" ng-model="newProject.name" required/>
+                    </div>
+                    <div class="form-group">
+                        <label>Key</label>
+                        <input type="text" class="form-control" placeholder="path" ng-model="newProject.key" required/>
+                        <p class="help-block">Use a simple single word that will be suffixed to the baseUrl.</p>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancel</button>
+                      <button type="submit" class="btn btn-primary" id="createProjectBtn">Create <i class="fa fa-pencil-square-o"></i></button>
+                  </div>
+              </form>
             </div>
             <!-- /.modal-content -->
         </div>

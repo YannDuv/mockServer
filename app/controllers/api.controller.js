@@ -1,27 +1,36 @@
 'use strict';
 
-var Api = require('../models/api.model.js').Api;
+const fs = require('fs');
+const Api = require('../models/api.model.js').Api;
+const Project = require('../models/project.model.js').Project;
 
 function mockResponse(req, res, method) {
-  console.info(method);
-  Api.find({method: method}, (err, apis) => {
-    let route;
-    let api;
 
-    res.set('Content-Type', 'application/json');
+  Project.findOne({key: req.params.projectKey})
+    .then((project) => {
+      Api.find({method: method, project: project}, (err, apis) => {
+        let route;
+        let api;
 
-    if (err) {
-      console.error(err); res.status(500);
-    }
+        res.set('Content-Type', 'application/json');
 
-    for (var i=0; i<apis.length; i++) {
-      api = apis[i];
-      route = api.url.replace(/\/:[a-zA-Z0-9]*/gi, '\/[a-zA-Z0-9\-]*');
-      if (req.url.match(route)) {
-        return res.status(api.status).send(api.response);
-      }
-    }
-    res.status(404).send(`Tudieu ! 404 Error.\nRequest not found for path: ${req.url}.\nMethod: ${req.method}.`);
+        if (err) {
+          console.error(err); res.status(500);
+        }
+
+        for (var i=0; i<apis.length; i++) {
+          api = apis[i];
+          route = api.url.replace(/\/:[a-zA-Z0-9]*/gi, '\/[a-zA-Z0-9\-]*');
+          if (req.url.match(route)) {
+            return res.status(api.status).send(api.response);
+          }
+        }
+        res.status(404).send({
+          title: 'Not found',
+          type: 'error',
+          message: `Tudieu ! 404 Error.\nRequest not found for path: ${req.url}.\nMethod: ${req.method}.`
+        });
+      });
   });
 };
 
@@ -32,7 +41,7 @@ exports.mock = function(method) {
 };
 
 exports.list = function(req, res) {
-  Api.find({}, (err, results) => {
+  Api.find({project: req.params.projectId}).populate('project').exec((err, results) => {
     if (err) {
       console.error(err);
       return res.status(500).send(err);
@@ -70,8 +79,9 @@ exports.edit = function(req, res) {
 exports.generateJsonFile = function(req, res) {
   let fileName = '/data/apis.json'
 
-  Api.find({}, (err, results) => {
-    fs.writeFile(__dirname +'/public'+ fileName, results, (err) => {
+  Api.find({project: req.params.projectId}, (err, results) => {
+    console.log(__dirname.replace('/app/controllers', ''));
+    fs.writeFile(__dirname.replace('/app/controllers', '') +'/public'+ fileName, results, (err) => {
       if (err) {
         console.error(err);
         return res.status(500).send(err);

@@ -1,17 +1,50 @@
 'use strict';
 
 const api = require('./controllers/api.controller');
+const project = require('./controllers/project.controller');
 const Api = require('./models/api.model.js').Api;
+const Project = require('./models/project.model.js').Project;
 
 module.exports = function(app) {
 
+  // Please remove this
+  app.get('/executeONCE', (req, res) => {
+    Project.findOne({}, (err, project) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      console.log(project);
+      Api.find({}, (err, apis) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        apis.forEach((api) => {
+          api.project = project;
+          api.save();
+        })
+      });
+      return res.send('ok');
+    });
+  });
+
+  // PROJECTS
+
+  // Create a new project
+  app.post('/PJnew', project.create);
+
+  app.get('/PJlist', project.list);
+
+  // APIS
+
   // Add custom route for CA authentication
   app.get('/:envCode/iphoneservice/authentication/grid', (req, res) => {
-    res.sendFile(__dirname +'/public/img/grid.jpeg');
+    res.sendFile(__dirname.replace('/app', '') +'/public/img/grid.jpeg');
   });
 
   // List all the ws
-  app.get('/WSlist', api.list);
+  app.get('/:projectId/WSlist/', api.list);
 
   // Edit requests
   app.post('/WSnew', api.create);
@@ -20,7 +53,7 @@ module.exports = function(app) {
   app.post('/WSedit', api.edit);
 
   // Export json file with all apis
-  app.get('/WSfile', api.generateJsonFile);
+  app.get('/:projectId/WSfile', api.generateJsonFile);
 
   // Remove an api
   app.delete('/WSRemove/:id', api.delete);
@@ -29,7 +62,7 @@ module.exports = function(app) {
   app.post('/*', api.mock('POST'));
 
   // Manage get requests
-  app.get('/*', api.mock('GET'));
+  app.get('/:projectKey/*', api.mock('GET'));
 
   // Manage delete requests
   app.delete('/*', api.mock('DELETE'));

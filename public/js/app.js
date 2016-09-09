@@ -9,6 +9,7 @@ var mockApp = angular.module('mockApp', []);
 mockApp.controller('indexController', ['$scope', '$http', function($scope, $http) {
   $scope.ws = [];
 
+  // APIS
   $scope.initEdit = function(target) {
     $('#editBtn').attr('disabled', false);
     $scope.editWs = target.item;
@@ -46,19 +47,6 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
       });
   };
 
-  function parseJson(data) {
-    try {
-      return JSON.parse(data);
-    } catch (err) {
-      new PNotify({
-        type: 'error',
-        title: 'How unfortunate !',
-        text: 'It seems that your json is invalid. Would you mind fixing it ?'
-      });
-      return null;
-    }
-  }
-
   $scope.create = function() {
 
     $('#createBtn').attr('disabled', true);
@@ -69,6 +57,8 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
       $('#createBtn').attr('disabled', false);
       return;
     }
+
+    $scope.newWs.project = $scope.selectedProject;
 
     $http.post('WSnew', $scope.newWs)
       .success((data) => {
@@ -93,7 +83,7 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
   };
 
   $scope.writeJsonFile = function() {
-    $http.get('WSfile')
+    $http.get($scope.selectedProject._id +'/WSfile')
       .success((data) => {
         window.location = data;
       })
@@ -134,19 +124,79 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
       });
   };
 
+
+  // PROJECT
+  $scope.createProject = function() {
+    $('createProjectBtn').attr('disabled', true);
+
+    $http.post('PJnew', $scope.newProject)
+      .success((data) => {
+        new PNotify({
+          type: 'success',
+          title: 'Ahoy !',
+          text: 'Project correctly created.'
+        });
+        $('createProjectBtn').attr('disabled', false);
+        $('#newProjectModal').modal('hide');
+        init();
+      })
+      .error((err) => {
+        $('createProjectBtn').attr('disabled', false);
+        new PNotify({
+          type: 'error',
+          title: 'Outchy ! Server error...',
+          text: err.message
+        });
+      });
+  }
+
+
+  // FUNCTIONS
+  $scope.refreshApis = function() {
+    $scope.baseURL = window.location + $scope.selectedProject.key;
+    $http.get($scope.selectedProject._id +'/WSlist')
+      .success((data) => {
+        $scope.ws = data;
+      })
+      .error((err) => {
+        new PNotify({
+          type: 'error',
+          title: 'Outchy ! Server error...',
+          text: err.message
+        });
+      });
+  }
+
   function init() {
-    $http.get('WSlist')
-    .success((data) => {
-      $scope.ws = data;
-    })
-    .error((err) => {
+    $http.get('PJlist')
+      .success((data) => {
+        $scope.projects = data;
+        if (!$scope.selectedProject) {
+          $scope.selectedProject = data[0];
+        }
+        $scope.refreshApis();
+      })
+      .error((err) => {
+        new PNotify({
+          type: 'error',
+          title: 'Outchy ! Server error...',
+          text: err.message
+        });
+      });
+  };
+
+  function parseJson(data) {
+    try {
+      return JSON.parse(data);
+    } catch (err) {
       new PNotify({
         type: 'error',
-        title: 'Outchy ! Server error...',
-        text: err.message
+        title: 'How unfortunate !',
+        text: 'It seems that your json is invalid. Would you mind fixing it ?'
       });
-    });
-  };
+      return null;
+    }
+  }
 
   init();
 

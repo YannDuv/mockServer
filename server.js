@@ -1,6 +1,5 @@
 'use strict';
 
-let fs = require('fs');
 let jsonServer = require('json-server');
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');

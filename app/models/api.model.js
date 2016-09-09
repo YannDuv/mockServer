@@ -27,6 +27,10 @@ var apiSchema = new mongoose.Schema({
   },
   response: {
     type: String
+  },
+  project: {
+    type: Schema.ObjectId,
+    ref: 'Project'
   }
 });
 
