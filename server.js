@@ -4,6 +4,9 @@ let jsonServer = require('json-server');
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
 
+// Use native promises
+mongoose.Promise = global.Promise;
+
 const middlewares = jsonServer.defaults();
 let server = jsonServer.create();
 const port = 3000;

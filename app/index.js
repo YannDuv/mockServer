@@ -59,16 +59,16 @@ module.exports = function(app) {
   app.delete('/WSRemove/:id', api.delete);
 
   // Manage post requests
-  app.post('/*', api.mock('POST'));
+  app.post('/:projectKey/*', api.mock('POST'));
 
   // Manage get requests
   app.get('/:projectKey/*', api.mock('GET'));
 
   // Manage delete requests
-  app.delete('/*', api.mock('DELETE'));
+  app.delete('/:projectKey/*', api.mock('DELETE'));
 
   // Manage put requests
-  app.put('/*', api.mock('PUT'));
+  app.put('/:projectKey/*', api.mock('PUT'));
 
   return app;
 };
