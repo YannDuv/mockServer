@@ -15,6 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
     "json-server": "^0.8.17",
     "mongoose": "^4.5.9"
   },

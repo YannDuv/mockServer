@@ -58,6 +58,10 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
       return;
     }
 
+    if (!$scope.newWs.url.startsWith('/')) {
+      $scope.newWs.url = '/'+ $scope.newWs.url;
+    }
+
     $scope.newWs.project = $scope.selectedProject;
 
     $http.post('WSnew', $scope.newWs)
@@ -124,6 +128,27 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
       });
   };
 
+  $scope.addCookie = function() {
+    if (!$scope.newWs.cookies) {
+      $scope.newWs.cookies = [{}];
+    } else {
+      $scope.newWs.cookies.push({});
+    }
+  };
+  $scope.addCookieEdit = function() {
+    if (!$scope.editWs.cookies) {
+      $scope.editWs.cookies = [{}];
+    } else {
+      $scope.editWs.cookies.push({});
+    }
+  };
+
+  $scope.removeCookie = function(index) {
+    $scope.newWs.cookies.splice(index, 1);
+  };
+  $scope.removeCookieEdit = function(index) {
+    $scope.editWs.cookies.splice(index, 1);
+  };
 
   // PROJECT
   $scope.createProject = function() {

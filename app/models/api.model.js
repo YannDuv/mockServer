@@ -21,17 +21,20 @@ var apiSchema = new mongoose.Schema({
       401,  // unauthorized
       403,  // forbidden
       404,  // not found
-      500   //internal server error
+      500   // internal server error
     ],
     default: 200
   },
-  response: {
-    type: String
-  },
+  response: String,
   project: {
     type: Schema.ObjectId,
     ref: 'Project'
-  }
+  },
+  cookies: [{
+    name: String,
+    value: String,
+    options: Schema.Types.Mixed
+  }]
 });
 
 exports.Api = mongoose.model('Api', apiSchema);

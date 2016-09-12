@@ -5,6 +5,16 @@ const Api = require('../models/api.model').Api;
 const Project = require('../models/project.model').Project;
 const handleError = require('../error').handleError;
 
+function getOptions(options) {
+  let result;
+  try {
+    result = JSON.parse(options);
+  } catch (err) {
+    console.error(err);
+  }
+  return !result ? {} : result;
+}
+
 function mockResponse(req, res, method) {
 
   Project.findOne({key: req.params.projectKey})
@@ -12,14 +22,22 @@ function mockResponse(req, res, method) {
     .then((apis) => {
       let route;
       let api;
+      let options;
 
       // required for iOS
       res.set('Content-Type', 'application/json');
 
-      for (var i=0; i<apis.length; i++) {
+      for (let i=0; i<apis.length; i++) {
         api = apis[i];
         route = api.url.replace(/\/:[a-zA-Z0-9]*/gi, '\/[a-zA-Z0-9\-]*');
         if (req.url.match(route)) {
+          for (let j=0; j<api.cookies.length; j++) {
+            res.cookie(
+              api.cookies[j].name,
+              api.cookies[j].value,
+              getOptions(api.cookies[j].options)
+            );
+          }
           return res.status(api.status).send(api.response);
         }
       }
@@ -54,7 +72,7 @@ exports.create = function(req, res) {
 exports.edit = function(req, res) {
   console.info(`EDIT - ${req.body._id}`);
 
-  Api.findByIdAndUpdate(req.body._id, {$set: {response: req.body.response}})
+  Api.findByIdAndUpdate(req.body._id, {$set: {response: req.body.response, cookies: req.body.cookies}})
     .then(() => res.send('Everything is awesome !'))
     .catch((err) => handleError(res, err));
 };
