@@ -29,12 +29,18 @@
                 <select class="form-control" ng-model="selectedProject" ng-options="project.name for project in projects track by project.key" ng-change="refreshApis()"></select>
             </form>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3" ng-show="baseURL">
             <span>base URL = <b>{{baseURL}}</b></span>
         </div>
     </div>
 
-    <div ng-repeat="item in ws | filter:search | orderBy:'url'" class="toggle row">
+    <div class="text-center" ng-hide="baseURL" data-toggle="modal" data-target="#newProjectModal" style="cursor: pointer">
+      <h3>
+        You must start by creating a project.
+      </h3>
+    </div>
+
+    <div ng-show="baseURL" ng-repeat="item in ws | filter:search | orderBy:'url'" class="toggle row">
         <input type="checkbox" value="selected" id="{{item.url}}" class="toggle-input">
         <label for="{{item.url}}" class="toggle-label">
             <span class="label label-info" ng-if="item.method==='POST'">{{item.method}}</span>

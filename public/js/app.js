@@ -27,7 +27,7 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
     }
 
     $http.post('WSedit', $scope.editWs)
-      .success((data) => {
+      .then(() => {
         $('#editBtn').attr('disabled', false);
         $('#editModal').modal('hide');
         init();
@@ -37,7 +37,7 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
           text: 'Ws correctly edited.'
         });
       })
-      .error((err, status) => {
+      .catch((err, status) => {
         $('#editBtn').attr('disabled', false);
         new PNotify({
           type: 'error',
@@ -65,7 +65,7 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
     $scope.newWs.project = $scope.selectedProject;
 
     $http.post('WSnew', $scope.newWs)
-      .success((data) => {
+      .then(() => {
         new PNotify({
           type: 'success',
           title: 'Ahoy !',
@@ -76,7 +76,7 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
         $scope.newWs = {};
         init();
       })
-      .error((err) => {
+      .catch((err) => {
         $('#createBtn').attr('disabled', false);
         new PNotify({
           type: 'error',
@@ -88,10 +88,10 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
 
   $scope.writeJsonFile = function() {
     $http.get($scope.selectedProject._id +'/WSfile')
-      .success((data) => {
-        window.location = data;
+      .then((response) => {
+        window.location = response.data;
       })
-      .error((err) => {
+      .catch((err) => {
         new PNotify({
           type: 'error',
           title: 'Outchy ! Server error...',
@@ -108,7 +108,7 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
     $('#removeBtn').attr('disabled', false);
 
     $http.delete('WSRemove/'+ $scope.removeWs._id)
-      .success((data) => {
+      .then(() => {
         new PNotify({
           type: 'success',
           title: 'Ahoy !',
@@ -118,7 +118,7 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
         init();
         $('#removeWsModal').modal('hide');
       })
-      .error((err) => {
+      .catch((err) => {
         $('#removeBtn').attr('disabled', false);
         new PNotify({
           type: 'error',
@@ -155,7 +155,7 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
     $('createProjectBtn').attr('disabled', true);
 
     $http.post('PJnew', $scope.newProject)
-      .success((data) => {
+      .then(() => {
         new PNotify({
           type: 'success',
           title: 'Ahoy !',
@@ -165,7 +165,7 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
         $('#newProjectModal').modal('hide');
         init();
       })
-      .error((err) => {
+      .catch((err) => {
         $('createProjectBtn').attr('disabled', false);
         new PNotify({
           type: 'error',
@@ -178,12 +178,14 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
 
   // FUNCTIONS
   $scope.refreshApis = function() {
+
+    console.log($scope, $scope.selectedProject);
     $scope.baseURL = window.location + $scope.selectedProject.key;
     $http.get($scope.selectedProject._id +'/WSlist')
-      .success((data) => {
-        $scope.ws = data;
+      .then((response) => {
+        $scope.ws = response.data;
       })
-      .error((err) => {
+      .catch((err) => {
         new PNotify({
           type: 'error',
           title: 'Outchy ! Server error...',
@@ -194,14 +196,14 @@ mockApp.controller('indexController', ['$scope', '$http', function($scope, $http
 
   function init() {
     $http.get('PJlist')
-      .success((data) => {
-        $scope.projects = data;
+      .then(function(response) {
+        $scope.projects = response.data;
         if (!$scope.selectedProject) {
-          $scope.selectedProject = data[0];
+          $scope.selectedProject = response.data[0];
         }
         $scope.refreshApis();
       })
-      .error((err) => {
+      .catch((err) => {
         new PNotify({
           type: 'error',
           title: 'Outchy ! Server error...',

@@ -1,23 +1,23 @@
 {
-  "name": "mock",
+  "name": "mockServer",
   "version": "1.0.0",
   "description": "## Install Requires : * nodeJs v4 or more",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
-    "url": "https://yann.duval@git.backelite.com/r/creditagricole/mabanque-json-server.git"
+    "url": "https://github.com/YannDuv/mockServer.git"
   },
-  "author": " <Yann Duval yann.duval@backelite.com>",
+  "author": " <Yann Duval yann.duval@gmx.fr>",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
-    "json-server": "^0.8.17",
     "mongoose": "^4.5.9"
   },
   "devDependencies": {

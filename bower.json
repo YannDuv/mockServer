@@ -1,13 +1,13 @@
 {
-  "name": "mock",
+  "name": "MockServer",
   "authors": [
-    "Yann Duval <yann.duval@backelite.com>"
+    "Yann Duval <yann.duval@gmx.fr>"
   ],
   "description": "",
   "main": "",
   "license": "MIT",
   "homepage": "",
-  "private": true,
+  "private": false,
   "ignore": [
     "**/.*",
     "node_modules",

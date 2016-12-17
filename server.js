@@ -1,6 +1,5 @@
 'use strict';
 
-const jsonServer = require('json-server');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const express = require('express');
@@ -9,7 +8,6 @@ const cookieParser = require('cookie-parser');
 // Use native promises
 mongoose.Promise = global.Promise;
 
-const middlewares = jsonServer.defaults();
 const port = 3000;
 const dbPort = 27017;
 const dbAuthentication = 'mongodb://';
@@ -24,16 +22,14 @@ db.once('open', function() {
 	console.info('MongoDB fonctionne correctement.');
 });
 
-let server = jsonServer.create();
+let app = express();
+app.use(express.static(__dirname + '/public'));
 
-// Set default middlewares (logger, static, cors and no-cache)
-server.use(middlewares);
+app.use(bodyParser.json());
+app.use(cookieParser('shhhh, very secret'));
 
-server.use(bodyParser.json());
-server.use(cookieParser('shhhh, very secret'));
+app = require('./app')(app);
 
-server = require('./app')(server);
-
-server.listen(port, function () {
+app.listen(port, function () {
   console.info('JSON Server is running on http://localhost:'+ port);
 });
