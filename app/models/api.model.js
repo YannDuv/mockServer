@@ -17,6 +17,7 @@ var apiSchema = new mongoose.Schema({
     type: Number,
     enum: [
       200,  // ok
+      201,  // create
       400,  // bad request
       401,  // unauthorized
       403,  // forbidden
