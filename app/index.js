@@ -70,5 +70,8 @@ module.exports = function(app) {
   // Manage put requests
   app.put('/:projectKey/*', api.mock('PUT'));
 
+  // Manage patch requests
+  app.patch('/:projectKey/*', api.mock('PATCH'));
+
   return app;
 };
