@@ -41,10 +41,11 @@
     </div>
 
     <div ng-show="baseURL" ng-repeat="item in ws | filter:search | orderBy:'url'" class="toggle row">
-        <input type="checkbox" value="selected" id="{{item.url}}" class="toggle-input">
-        <label for="{{item.url}}" class="toggle-label">
+        <input type="checkbox" value="selected" id="{{item.status}}{{item.url}}" class="toggle-input">
+        <label for="{{item.status}}{{item.url}}" class="toggle-label">
             <span class="label label-info" ng-if="item.method==='POST'">{{item.method}}</span>
             <span class="label label-danger" ng-if="item.method==='DELETE'">{{item.method}}</span>
+            <span class="label label-success" ng-if="item.method==='PATCH'">{{item.method}}</span>
             <span class="label label-primary" ng-if="item.method==='GET'">{{item.method}}</span>
             <span class="label label-success" ng-if="item.method==='PUT'">{{item.method}}</span> {{item.status}} - {{item.url}}
         </label>
@@ -129,6 +130,7 @@
                                 <option selected="selected">GET</option>
                                 <option>POST</option>
                                 <option>PUT</option>
+                                <option>PATCH</option>
                                 <option>DELETE</option>
                             </select>
                         </div>
@@ -209,6 +211,7 @@
                         <span class="label label-danger" ng-if="removeWs.method==='DELETE'">{{removeWs.method}}</span>
                         <span class="label label-primary" ng-if="removeWs.method==='GET'">{{removeWs.method}}</span>
                         <span class="label label-success" ng-if="removeWs.method==='PUT'">{{removeWs.method}}</span>
+                        <span class="label label-success" ng-if="removeWs.method==='PATCH'">{{removeWs.method}}</span>
                         {{removeWs.url}} ?
                       </q></b>
                         <p>Beware the ninja warrior in your room is waiting for your answer.</p>

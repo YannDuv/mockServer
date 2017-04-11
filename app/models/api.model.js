@@ -10,7 +10,7 @@ var apiSchema = new mongoose.Schema({
   },
   method: {
     type: String,
-    enum: ['POST', 'GET', 'PUT', 'DELETE'],
+    enum: ['POST', 'GET', 'PUT', 'DELETE', 'PATCH'],
     default: 'GET'
   },
   status: {
